@@ -1,19 +1,24 @@
 # CodeForge
 
-Platform **assess & train** skill ngoding — dirancang untuk yang sibuk dan ingin paham konsep (bukan hafalan panjang).
+Platform assess & train skill ngoding — **disusun untuk stack kamu**.
 
-Fokus: **jelaskan konsep dengan bahasa sederhana** — persiapan tech interview.
+## Prioritas stack
+
+### Utama
+React · Next.js · Node.js · Vitest/RTL · TypeScript · Express · Performance
+
+### Menengah
+NestJS · Nuxt · Flutter
+
+### Rendah
+Go · Laravel · Python
 
 ## Fitur
 
-- **Sesi 5 menit** — 1 konsep: penjelasan awam, analogi, tips interview, cek pemahaman
-- **Konsep singkat** — 9 modul (3–5 menit masing-masing)
-- **Cek cepat** — 5 pertanyaan (~3 menit) atau assessment lengkap (~10 menit)
-- **Latihan kode** — opsional, kalau ada waktu extra
-
-## Stack
-
-Next.js 16 · React 19 · TypeScript · Tailwind CSS 4
+- **Sesi 5 menit** — konsep per stack, penjelasan awam + tips interview
+- **Cek cepat** — 5 pertanyaan stack utama (~3 menit)
+- **Assessment lengkap** — 12 pertanyaan (~10 menit)
+- **Latihan kode** — opsional, TS/React/Node themed
 
 ## Setup
 
@@ -26,8 +31,8 @@ Buka [http://localhost:3000](http://localhost:3000).
 
 ## Alur disarankan
 
-1. **Sesi 5 menit** setiap hari — pahami & latih jelaskan 1 konsep
-2. **Cek cepat** seminggu sekali — ukur progress
-3. **Latihan kode** — opsional
+1. **Sesi 5 menit/hari** — mulai dari prioritas utama (React → Next → …)
+2. **Cek cepat** seminggu sekali
+3. Latihan kode kalau ada waktu
 
-Progress in-memory (`globalThis`) — reset saat server restart.
+Progress in-memory — reset saat server restart.

@@ -14,14 +14,28 @@ import type {
 import {
   LEVEL_DESCRIPTIONS,
   LEVEL_LABELS,
-  TOPIC_LABELS,
 } from "@/lib/types";
+import {
+  PRIORITY_LABELS,
+  trackLabel,
+  TRACK_META,
+} from "@/lib/tracks";
+import type { TrackPriority, TechTrack } from "@/lib/types";
 
 type View = "home" | "session" | "concepts" | "assessment" | "results" | "training";
 
+type TrackProgress = {
+  track: TechTrack;
+  label: string;
+  priority: TrackPriority;
+  description: string;
+  conceptsTotal: number;
+  conceptsDone: number;
+};
+
 type NextSession = {
   concept: ConceptBite;
-  weakTopics: string[];
+  weakTracks: string[];
   estimatedMinutes: number;
 };
 
@@ -31,6 +45,7 @@ type CurriculumPayload = {
   concepts: ConceptBite[];
   exercises: TrainingExercise[];
   progress: UserProgress;
+  tracks: TrackProgress[];
   nextSession: NextSession;
 };
 
@@ -42,6 +57,7 @@ export function SkillApp() {
   const [exercises, setExercises] = useState<TrainingExercise[]>([]);
   const [progress, setProgress] = useState<UserProgress | null>(null);
   const [nextSession, setNextSession] = useState<NextSession | null>(null);
+  const [tracks, setTracks] = useState<TrackProgress[]>([]);
   const [assessmentMode, setAssessmentMode] = useState<AssessmentMode>("quick");
   const [sessionConcept, setSessionConcept] = useState<ConceptBite | null>(null);
   const [loading, setLoading] = useState(true);
@@ -57,6 +73,7 @@ export function SkillApp() {
     setExercises(data.exercises);
     setProgress(data.progress);
     setNextSession(data.nextSession);
+    setTracks(data.tracks);
   }, []);
 
   useEffect(() => {
@@ -164,6 +181,7 @@ export function SkillApp() {
           <HomeView
             progress={progress}
             nextSession={nextSession}
+            tracks={tracks}
             completedConcepts={completedConcepts}
             totalConcepts={concepts.length}
             completedExercises={completedExercises}
@@ -189,6 +207,7 @@ export function SkillApp() {
         {view === "concepts" ? (
           <ConceptsView
             concepts={concepts}
+            tracks={tracks}
             completed={new Set(progress?.completedConcepts ?? [])}
             onSelect={(concept) => startSession(concept)}
           />
@@ -284,6 +303,7 @@ function Header({
 function HomeView({
   progress,
   nextSession,
+  tracks,
   completedConcepts,
   totalConcepts,
   completedExercises,
@@ -298,6 +318,7 @@ function HomeView({
 }: {
   progress: UserProgress | null;
   nextSession: NextSession | null;
+  tracks: TrackProgress[];
   completedConcepts: number;
   totalConcepts: number;
   completedExercises: number;
@@ -311,31 +332,32 @@ function HomeView({
   onReset: () => void;
 }) {
   const assessment = progress?.assessment;
+  const topTracks = tracks.filter((t) => t.priority === "top");
 
   return (
     <div className="grid gap-8 lg:grid-cols-[1.2fr_1fr]">
       <section className="rounded-2xl border border-steel-border bg-steel/80 p-6 shadow-[0_0_80px_rgba(255,122,24,0.08)]">
         <p className="font-mono text-xs uppercase tracking-wide text-ember-soft">
-          Buat yang sibuk
+          Stack kamu
         </p>
         <h2 className="mt-2 text-2xl font-semibold tracking-tight">
-          Pahami konsep, bukan hafalan panjang
+          React · Next · Node · TS · Testing
         </h2>
         <p className="mt-3 text-muted leading-relaxed">
-          Banyak gagal interview bukan karena tidak bisa kode, tapi sulit{" "}
-          <strong className="text-foreground">menjelaskan konsep</strong> dengan
-          bahasa sederhana. CodeForge bantu latihan itu — modul pendek, ~5 menit
-          per sesi.
+          Kurikulum disesuaikan prioritas kamu. Sesi 5 menit per konsep — fokus
+          paham & jelaskan di interview, bukan modul panjang.
         </p>
 
         {nextSession ? (
           <div className="mt-6 rounded-xl border border-ember/30 bg-ember/5 p-4">
-            <p className="text-sm font-medium">Sesi berikutnya · ~{nextSession.estimatedMinutes} menit</p>
+            <p className="text-sm font-medium">
+              Sesi berikutnya · ~{nextSession.estimatedMinutes} menit
+            </p>
             <p className="mt-1 text-lg font-semibold">{nextSession.concept.title}</p>
             <p className="mt-1 text-sm text-muted">
-              {TOPIC_LABELS[nextSession.concept.topic]}
-              {nextSession.weakTopics.length > 0
-                ? ` · fokus: ${nextSession.weakTopics.join(", ")}`
+              {trackLabel(nextSession.concept.track)}
+              {nextSession.weakTracks.length > 0
+                ? ` · perlu diperkuat: ${nextSession.weakTracks.join(", ")}`
                 : ""}
             </p>
             <div className="mt-4">
@@ -344,14 +366,34 @@ function HomeView({
           </div>
         ) : null}
 
+        <div className="mt-6">
+          <p className="text-sm font-medium mb-3">{PRIORITY_LABELS.top}</p>
+          <ul className="grid gap-2 sm:grid-cols-2">
+            {topTracks.map((track) => (
+              <li
+                key={track.track}
+                className="rounded-lg border border-steel-border bg-steel-raised px-3 py-2 text-sm"
+              >
+                <div className="flex justify-between gap-2">
+                  <span className="font-medium">{track.label}</span>
+                  <span className="text-xs text-muted">
+                    {track.conceptsDone}/{track.conceptsTotal}
+                  </span>
+                </div>
+                <p className="text-xs text-muted mt-0.5">{track.description}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+
         <div className="mt-6 flex flex-wrap gap-3">
           <SecondaryButton onClick={onStartQuickAssessment}>
-            Cek cepat (~3 menit)
+            Cek cepat stack (~3 menit)
           </SecondaryButton>
           <SecondaryButton onClick={onStartFullAssessment}>
             Assessment lengkap (~10 menit)
           </SecondaryButton>
-          <SecondaryButton onClick={onViewConcepts}>Lihat semua konsep</SecondaryButton>
+          <SecondaryButton onClick={onViewConcepts}>Semua konsep</SecondaryButton>
           <SecondaryButton onClick={onStartTraining}>Latihan kode</SecondaryButton>
           {assessment ? (
             <SecondaryButton onClick={onViewResults}>Lihat hasil</SecondaryButton>
@@ -427,7 +469,7 @@ function SessionView({
     <div className="mx-auto max-w-2xl">
       <div className="mb-4 flex items-center justify-between gap-4">
         <p className="text-sm text-muted">
-          Sesi · {concept.minutes} menit · {TOPIC_LABELS[concept.topic]}
+          Sesi · {concept.minutes} menit · {trackLabel(concept.track)}
         </p>
         <p className="text-sm text-muted">
           Langkah {step + 1}/{steps.length}
@@ -518,41 +560,73 @@ function SessionView({
 
 function ConceptsView({
   concepts,
+  tracks,
   completed,
   onSelect,
 }: {
   concepts: ConceptBite[];
+  tracks: TrackProgress[];
   completed: Set<string>;
   onSelect: (concept: ConceptBite) => void;
 }) {
+  const priorities: TrackPriority[] = ["top", "mid", "low"];
+
   return (
     <div>
-      <h2 className="text-lg font-semibold">Konsep singkat</h2>
+      <h2 className="text-lg font-semibold">Konsep per stack</h2>
       <p className="mt-1 text-sm text-muted">
-        Tiap modul 3–5 menit. Penjelasan awam + tips interview.
+        Tiap modul 3–5 menit · prioritas utama dulu
       </p>
-      <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-        {concepts.map((concept) => (
-          <li key={concept.id}>
-            <button
-              type="button"
-              onClick={() => onSelect(concept)}
-              className="h-full w-full rounded-xl border border-steel-border bg-steel/70 p-4 text-left transition hover:border-ember/40"
-            >
-              <div className="flex items-start justify-between gap-2">
-                <p className="font-medium">{concept.title}</p>
-                <span className="shrink-0 font-mono text-[11px] text-muted">
-                  {concept.minutes}m
-                </span>
-              </div>
-              <p className="mt-1 text-xs text-muted">{TOPIC_LABELS[concept.topic]}</p>
-              {completed.has(concept.id) ? (
-                <p className="mt-2 text-xs text-emerald-400">✓ selesai</p>
-              ) : null}
-            </button>
-          </li>
-        ))}
-      </ul>
+
+      {priorities.map((priority) => {
+        const priorityTracks = tracks.filter((t) => t.priority === priority);
+        if (priorityTracks.length === 0) return null;
+
+        return (
+          <section key={priority} className="mt-8">
+            <h3 className="font-semibold text-ember-soft">{PRIORITY_LABELS[priority]}</h3>
+            {priorityTracks.map((trackInfo) => {
+              const trackConcepts = concepts.filter((c) => c.track === trackInfo.track);
+              if (trackConcepts.length === 0) return null;
+
+              return (
+                <div key={trackInfo.track} className="mt-4">
+                  <div className="mb-2 flex items-baseline justify-between gap-2">
+                    <p className="font-medium">
+                      {trackInfo.label}
+                      <span className="ml-2 text-xs font-normal text-muted">
+                        {trackInfo.conceptsDone}/{trackInfo.conceptsTotal} selesai
+                      </span>
+                    </p>
+                    <p className="text-xs text-muted">{TRACK_META[trackInfo.track].description}</p>
+                  </div>
+                  <ul className="grid gap-2 sm:grid-cols-2">
+                    {trackConcepts.map((concept) => (
+                      <li key={concept.id}>
+                        <button
+                          type="button"
+                          onClick={() => onSelect(concept)}
+                          className="h-full w-full rounded-xl border border-steel-border bg-steel/70 p-4 text-left transition hover:border-ember/40"
+                        >
+                          <div className="flex items-start justify-between gap-2">
+                            <p className="font-medium text-sm">{concept.title}</p>
+                            <span className="shrink-0 font-mono text-[11px] text-muted">
+                              {concept.minutes}m
+                            </span>
+                          </div>
+                          {completed.has(concept.id) ? (
+                            <p className="mt-2 text-xs text-emerald-400">✓ selesai</p>
+                          ) : null}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
+          </section>
+        );
+      })}
     </div>
   );
 }
@@ -631,7 +705,7 @@ function AssessmentView({
 
       <article className="rounded-2xl border border-steel-border bg-steel/80 p-6">
         <p className="font-mono text-xs uppercase tracking-wide text-ember-soft">
-          {TOPIC_LABELS[question.topic]}
+          {trackLabel(question.track)}
         </p>
         <h2 className="mt-2 whitespace-pre-line text-lg font-semibold leading-relaxed">
           {question.question}
@@ -726,9 +800,9 @@ function ResultsView({
   onTrain: () => void;
   onSession: () => void;
 }) {
-  const weakTopics = result.topicScores
+  const weakTracks = result.trackScores
     .filter((t) => t.percent < 70)
-    .map((t) => TOPIC_LABELS[t.topic]);
+    .map((t) => trackLabel(t.track));
 
   return (
     <div className="grid gap-6 lg:grid-cols-[1fr_1.1fr]">
@@ -741,9 +815,9 @@ function ResultsView({
         <p className="mt-3 text-muted leading-relaxed">
           {LEVEL_DESCRIPTIONS[result.level]}
         </p>
-        {weakTopics.length > 0 ? (
+        {weakTracks.length > 0 ? (
           <p className="mt-4 rounded-lg border border-amber-900/40 bg-amber-950/30 px-4 py-3 text-sm text-amber-100">
-            Latih penjelasan konsep: <strong>{weakTopics.join(", ")}</strong>
+            Latih penjelasan: <strong>{weakTracks.join(", ")}</strong>
           </p>
         ) : null}
         <div className="mt-6 flex flex-wrap gap-3">
@@ -754,20 +828,20 @@ function ResultsView({
       </section>
 
       <section className="rounded-2xl border border-steel-border bg-steel/70 p-6">
-        <h3 className="font-semibold">Skor per topik</h3>
+        <h3 className="font-semibold">Skor per stack</h3>
         <ul className="mt-4 space-y-4">
-          {result.topicScores.map((topic) => (
-            <li key={topic.topic}>
+          {result.trackScores.map((item) => (
+            <li key={item.track}>
               <div className="mb-1 flex justify-between text-sm">
-                <span>{TOPIC_LABELS[topic.topic]}</span>
+                <span>{trackLabel(item.track)}</span>
                 <span className="text-muted">
-                  {topic.correct}/{topic.total} ({topic.percent}%)
+                  {item.correct}/{item.total} ({item.percent}%)
                 </span>
               </div>
               <div className="h-2 overflow-hidden rounded-full bg-steel-raised">
                 <div
-                  className={`h-full ${topic.percent >= 70 ? "bg-emerald-500" : "bg-ember"}`}
-                  style={{ width: `${topic.percent}%` }}
+                  className={`h-full ${item.percent >= 70 ? "bg-emerald-500" : "bg-ember"}`}
+                  style={{ width: `${item.percent}%` }}
                 />
               </div>
             </li>
@@ -882,7 +956,7 @@ function TrainingView({
                 >
                   <span className="block font-medium">{exercise.title}</span>
                   <span className="text-xs text-muted">
-                    ~{exercise.minutes}m · {TOPIC_LABELS[exercise.topic]}
+                    ~{exercise.minutes}m · {trackLabel(exercise.track)}
                     {completed.has(exercise.id) ? " · ✓" : ""}
                   </span>
                 </button>

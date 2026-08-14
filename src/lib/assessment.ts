@@ -4,8 +4,8 @@ import type {
   AssessmentQuestion,
   AssessmentResult,
   SkillLevel,
-  Topic,
-  TopicScore,
+  TechTrack,
+  TrackScore,
 } from "@/lib/types";
 import { LEVEL_LABELS, QUICK_ASSESSMENT_IDS } from "@/lib/types";
 
@@ -23,15 +23,15 @@ export function scoreAssessment(
   mode: AssessmentMode = "full",
 ): AssessmentResult {
   const questions = getAssessmentQuestions(mode);
-  const topicMap = new Map<Topic, { correct: number; total: number }>();
+  const trackMap = new Map<TechTrack, { correct: number; total: number }>();
 
   for (const question of questions) {
-    const current = topicMap.get(question.topic) ?? { correct: 0, total: 0 };
+    const current = trackMap.get(question.track) ?? { correct: 0, total: 0 };
     current.total += 1;
     if (answers[question.id] === question.correctIndex) {
       current.correct += 1;
     }
-    topicMap.set(question.topic, current);
+    trackMap.set(question.track, current);
   }
 
   const correctCount = questions.filter(
@@ -39,9 +39,9 @@ export function scoreAssessment(
   ).length;
   const score = Math.round((correctCount / questions.length) * 100);
 
-  const topicScores: TopicScore[] = Array.from(topicMap.entries()).map(
-    ([topic, { correct, total }]) => ({
-      topic,
+  const trackScores: TrackScore[] = Array.from(trackMap.entries()).map(
+    ([track, { correct, total }]) => ({
+      track,
       correct,
       total,
       percent: total === 0 ? 0 : Math.round((correct / total) * 100),
@@ -54,7 +54,7 @@ export function scoreAssessment(
     score,
     level,
     levelLabel: LEVEL_LABELS[level],
-    topicScores,
+    trackScores,
     completedAt: new Date().toISOString(),
     answers,
     mode,

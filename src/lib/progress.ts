@@ -3,6 +3,8 @@ import { TRAINING_EXERCISES } from "@/lib/curriculum";
 import type {
   AssessmentResult,
   SkillLevel,
+  TechTrack,
+  TrackScore,
   TrainingExercise,
   UserProgress,
 } from "@/lib/types";
@@ -29,8 +31,27 @@ const store: ProgressStore =
   });
 
 function normalizeProgress(raw: UserProgress): UserProgress {
-  const assessment = raw.assessment
-    ? { ...raw.assessment, mode: raw.assessment.mode ?? "full" }
+  const rawAssessment = raw.assessment as AssessmentResult & {
+    topicScores?: AssessmentResult["trackScores"];
+  } | null;
+
+  const assessment = rawAssessment
+    ? {
+        ...rawAssessment,
+        mode: rawAssessment.mode ?? "full",
+        trackScores:
+          rawAssessment.trackScores ??
+          rawAssessment.topicScores?.map((s) => {
+            const legacy = s as TrackScore & { topic?: TechTrack };
+            return {
+              track: legacy.track ?? legacy.topic ?? "react",
+              correct: legacy.correct,
+              total: legacy.total,
+              percent: legacy.percent,
+            };
+          }) ??
+          [],
+      }
     : null;
 
   return {

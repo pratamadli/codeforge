@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CodeForge — Assess & Train Coding Skills",
+  title: "CodeForge — React, Next, Node & Stack Interview Prep",
   description:
-    "Assessment skill ngoding dan latihan coding personal — ukur levelmu, latih kelemahan, naik skill.",
+    "Sesi 5 menit per konsep — React, Next.js, Node, TypeScript, Testing, Express, Performance, dan stack lainnya.",
 };
 
 export default function RootLayout({

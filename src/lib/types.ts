@@ -1,42 +1,45 @@
 export type SkillLevel = "beginner" | "intermediate" | "advanced" | "expert";
 
-export type Topic =
-  | "fundamentals"
-  | "functions"
-  | "data-structures"
-  | "algorithms"
-  | "async"
-  | "patterns";
+export type TechTrack =
+  | "react"
+  | "next"
+  | "node"
+  | "testing"
+  | "typescript"
+  | "express"
+  | "performance"
+  | "nestjs"
+  | "nuxt"
+  | "flutter"
+  | "go"
+  | "laravel"
+  | "python";
+
+export type TrackPriority = "top" | "mid" | "low";
 
 export type AssessmentMode = "quick" | "full";
 
 export type AssessmentQuestion = {
   id: string;
-  topic: Topic;
+  track: TechTrack;
   difficulty: 1 | 2 | 3;
   type: "multiple-choice" | "code-output";
   question: string;
   code?: string;
   options: string[];
   correctIndex: number;
-  /** Penjelasan singkat, bahasa awam */
   explanation: string;
-  /** Kalimat siap pakai saat interview */
   interviewAnswer: string;
 };
 
 export type ConceptBite = {
   id: string;
-  topic: Topic;
+  track: TechTrack;
   title: string;
   minutes: number;
-  /** Penjelasan utama — maksimal 2–3 paragraf pendek */
   simpleExplanation: string;
-  /** Analogi dari kehidupan sehari-hari */
   analogy: string;
-  /** Template jawaban interview (1–2 kalimat) */
   interviewTip: string;
-  /** Kesalahan umum yang bikin interviewer ragu */
   commonMistake: string;
   checkQuestions: {
     id: string;
@@ -48,7 +51,7 @@ export type ConceptBite = {
 export type TrainingExercise = {
   id: string;
   levels: SkillLevel[];
-  topic: Topic;
+  track: TechTrack;
   title: string;
   description: string;
   minutes: number;
@@ -58,8 +61,8 @@ export type TrainingExercise = {
   solution: string;
 };
 
-export type TopicScore = {
-  topic: Topic;
+export type TrackScore = {
+  track: TechTrack;
   correct: number;
   total: number;
   percent: number;
@@ -69,7 +72,7 @@ export type AssessmentResult = {
   score: number;
   level: SkillLevel;
   levelLabel: string;
-  topicScores: TopicScore[];
+  trackScores: TrackScore[];
   completedAt: string;
   answers: Record<string, number>;
   mode: AssessmentMode;
@@ -84,15 +87,6 @@ export type UserProgress = {
   updatedAt: string;
 };
 
-export const TOPIC_LABELS: Record<Topic, string> = {
-  fundamentals: "Dasar-dasar",
-  functions: "Fungsi & scope",
-  "data-structures": "Struktur data",
-  algorithms: "Algoritma",
-  async: "Async & promise",
-  patterns: "Pola & OOP",
-};
-
 export const LEVEL_LABELS: Record<SkillLevel, string> = {
   beginner: "Pemula",
   intermediate: "Menengah",
@@ -102,19 +96,22 @@ export const LEVEL_LABELS: Record<SkillLevel, string> = {
 
 export const LEVEL_DESCRIPTIONS: Record<SkillLevel, string> = {
   beginner:
-    "Fondasi masih perlu diperkuat. Mulai dari konsep dasar — variabel, loop, dan baca kode sederhana.",
+    "Fondasi stack JS/React perlu diperkuat. Fokus ke React, TypeScript, dan konsep dasar Node.",
   intermediate:
-    "Dasar sudah ada. Latih penjelasan konsep + latihan kecil supaya interview terdengar meyakinkan.",
+    "Dasar ada. Perdalam Next.js, testing, dan latih jelaskan konsep di interview.",
   advanced:
-    "Logika sudah kuat. Fokus latih menjelaskan async, algoritma, dan pola dengan bahasa sederhana.",
+    "Stack utama sudah kuat. Tuning performance, Express/Nest, dan edge case interview.",
   expert:
-    "Skill solid. Pertahankan dengan sesi singkat dan latihan jelaskan konsep tanpa jargon.",
+    "Level solid di stack prioritas. Pertahankan dengan sesi singkat dan mock interview.",
 };
 
 export const QUICK_ASSESSMENT_IDS = [
-  "q1",
-  "q4",
-  "q6",
-  "q8",
-  "q10",
+  "q-react-1",
+  "q-next-1",
+  "q-node-1",
+  "q-ts-1",
+  "q-test-1",
 ] as const;
+
+/** @deprecated use trackScores — kept for normalizeProgress migration */
+export type TopicScore = TrackScore;
