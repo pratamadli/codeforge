@@ -1,17 +1,24 @@
 # CodeForge
 
-A tiny snippet forge — create and browse code snippets.
+Platform assess & train skill ngoding — **disusun untuk stack kamu**.
 
-Heat a title, pick a language, and strike code into an in-memory library. Search, filter, copy, or quench pieces from the rack.
+## Prioritas stack
 
-## Stack
+### Utama
+React · Next.js · Node.js · Vitest/RTL · TypeScript · Express · Performance
 
-- Next.js 16 (App Router)
-- React 19
-- TypeScript
-- Tailwind CSS 4
+### Menengah
+NestJS · Nuxt · Flutter
 
-Persistence lives in process memory (`globalThis`) so snippets survive Next.js hot reloads during development, but reset when the server restarts.
+### Rendah
+Go · Laravel · Python
+
+## Fitur
+
+- **Sesi 5 menit** — konsep per stack, penjelasan awam + tips interview
+- **Cek cepat** — 5 pertanyaan stack utama (~3 menit)
+- **Assessment lengkap** — 12 pertanyaan (~10 menit)
+- **Latihan kode** — opsional, TS/React/Node themed
 
 ## Setup
 
@@ -20,24 +27,12 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Buka [http://localhost:3000](http://localhost:3000).
 
-## Scripts
+## Alur disarankan
 
-| Command | What it does |
-| --- | --- |
-| `npm run dev` | Start the Next.js dev server |
-| `npm run build` | Production build |
-| `npm start` | Serve the production build |
-| `npm run lint` | ESLint |
-| `npm run typecheck` | TypeScript (`tsc --noEmit`) |
+1. **Sesi 5 menit/hari** — mulai dari prioritas utama (React → Next → …)
+2. **Cek cepat** seminggu sekali
+3. Latihan kode kalau ada waktu
 
-## API
-
-| Method | Path | Body | Result |
-| --- | --- | --- | --- |
-| `GET` | `/api/snippets` | — | `{ snippets: Snippet[] }` |
-| `POST` | `/api/snippets` | `{ title, language?, code }` | `201 { snippet }` |
-| `DELETE` | `/api/snippets/:id` | — | `{ ok: true }` |
-
-`title` and `code` are required on create. `language` defaults to `plaintext`.
+Progress in-memory — reset saat server restart.

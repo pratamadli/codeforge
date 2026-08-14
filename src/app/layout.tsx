@@ -13,11 +13,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CodeForge",
-  description: "A tiny snippet forge — create and browse code snippets.",
+  title: "CodeForge — React, Next, Node & Stack Interview Prep",
+  description:
+    "Sesi 5 menit per konsep — React, Next.js, Node, TypeScript, Testing, Express, Performance, dan stack lainnya.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
       lang="en"
