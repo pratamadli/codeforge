@@ -8,6 +8,8 @@ export type Topic =
   | "async"
   | "patterns";
 
+export type AssessmentMode = "quick" | "full";
+
 export type AssessmentQuestion = {
   id: string;
   topic: Topic;
@@ -17,7 +19,30 @@ export type AssessmentQuestion = {
   code?: string;
   options: string[];
   correctIndex: number;
+  /** Penjelasan singkat, bahasa awam */
   explanation: string;
+  /** Kalimat siap pakai saat interview */
+  interviewAnswer: string;
+};
+
+export type ConceptBite = {
+  id: string;
+  topic: Topic;
+  title: string;
+  minutes: number;
+  /** Penjelasan utama — maksimal 2–3 paragraf pendek */
+  simpleExplanation: string;
+  /** Analogi dari kehidupan sehari-hari */
+  analogy: string;
+  /** Template jawaban interview (1–2 kalimat) */
+  interviewTip: string;
+  /** Kesalahan umum yang bikin interviewer ragu */
+  commonMistake: string;
+  checkQuestions: {
+    id: string;
+    question: string;
+    answer: string;
+  }[];
 };
 
 export type TrainingExercise = {
@@ -26,6 +51,7 @@ export type TrainingExercise = {
   topic: Topic;
   title: string;
   description: string;
+  minutes: number;
   starterCode: string;
   hints: string[];
   tests: { args: unknown[]; expected: unknown }[];
@@ -46,12 +72,15 @@ export type AssessmentResult = {
   topicScores: TopicScore[];
   completedAt: string;
   answers: Record<string, number>;
+  mode: AssessmentMode;
 };
 
 export type UserProgress = {
   assessment: AssessmentResult | null;
   completedExercises: string[];
+  completedConcepts: string[];
   exerciseAttempts: Record<string, number>;
+  sessionsCompleted: number;
   updatedAt: string;
 };
 
@@ -73,11 +102,19 @@ export const LEVEL_LABELS: Record<SkillLevel, string> = {
 
 export const LEVEL_DESCRIPTIONS: Record<SkillLevel, string> = {
   beginner:
-    "Kamu perlu memperkuat fondasi: variabel, kondisi, loop, dan membaca kode sederhana.",
+    "Fondasi masih perlu diperkuat. Mulai dari konsep dasar — variabel, loop, dan baca kode sederhana.",
   intermediate:
-    "Dasar sudah cukup. Fokus ke fungsi, array/object, dan pemecahan masalah kecil.",
+    "Dasar sudah ada. Latih penjelasan konsep + latihan kecil supaya interview terdengar meyakinkan.",
   advanced:
-    "Kamu nyaman dengan logika kompleks. Latihan algoritma dan async akan membantu naik level.",
+    "Logika sudah kuat. Fokus latih menjelaskan async, algoritma, dan pola dengan bahasa sederhana.",
   expert:
-    "Skill solid. Tantangan lanjutan dan pola desain akan menjaga ketajamanmu.",
+    "Skill solid. Pertahankan dengan sesi singkat dan latihan jelaskan konsep tanpa jargon.",
 };
+
+export const QUICK_ASSESSMENT_IDS = [
+  "q1",
+  "q4",
+  "q6",
+  "q8",
+  "q10",
+] as const;

@@ -1,5 +1,9 @@
 import { NextResponse } from "next/server";
-import { scoreAssessment, validateAnswers } from "@/lib/assessment";
+import {
+  parseAssessmentMode,
+  scoreAssessment,
+  validateAnswers,
+} from "@/lib/assessment";
 import { saveAssessmentResult } from "@/lib/progress";
 
 export async function POST(request: Request) {
@@ -13,7 +17,8 @@ export async function POST(request: Request) {
     );
   }
 
-  const answers = validateAnswers(body);
+  const mode = parseAssessmentMode(body);
+  const answers = validateAnswers(body, mode);
   if (!answers) {
     return NextResponse.json(
       { error: "Jawaban assessment tidak lengkap atau tidak valid." },
@@ -21,7 +26,7 @@ export async function POST(request: Request) {
     );
   }
 
-  const result = scoreAssessment(answers);
+  const result = scoreAssessment(answers, mode);
   const progress = saveAssessmentResult(result);
 
   return NextResponse.json({ result, progress });

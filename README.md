@@ -1,24 +1,19 @@
 # CodeForge
 
-Platform untuk **menilai** dan **melatih** skill ngoding kamu.
+Platform **assess & train** skill ngoding — dirancang untuk yang sibuk dan ingin paham konsep (bukan hafalan panjang).
 
-Assessment singkat mengukur level (Pemula → Mahir), lalu latihan coding disesuaikan dengan kelemahan dan topik yang perlu diperkuat.
+Fokus: **jelaskan konsep dengan bahasa sederhana** — persiapan tech interview.
 
 ## Fitur
 
-- **Assessment** — 12 pertanyaan (konsep, baca kode, algoritma, async, pola)
-- **Level & breakdown** — skor per topik + rekomendasi fokus latihan
-- **Latihan coding** — soal JavaScript dengan hint, test otomatis, dan solusi
-- **Progress** — lacak latihan selesai dan percobaan
+- **Sesi 5 menit** — 1 konsep: penjelasan awam, analogi, tips interview, cek pemahaman
+- **Konsep singkat** — 9 modul (3–5 menit masing-masing)
+- **Cek cepat** — 5 pertanyaan (~3 menit) atau assessment lengkap (~10 menit)
+- **Latihan kode** — opsional, kalau ada waktu extra
 
 ## Stack
 
-- Next.js 16 (App Router)
-- React 19
-- TypeScript
-- Tailwind CSS 4
-
-Progress disimpan di memori proses (`globalThis`) — bertahan saat hot reload, reset saat server restart.
+Next.js 16 · React 19 · TypeScript · Tailwind CSS 4
 
 ## Setup
 
@@ -29,28 +24,10 @@ npm run dev
 
 Buka [http://localhost:3000](http://localhost:3000).
 
-## Alur pengguna
+## Alur disarankan
 
-1. **Beranda** — overview dan stat progress
-2. **Assessment** — jawab 12 pertanyaan
-3. **Hasil** — level, skor, breakdown topik
-4. **Latihan** — kerjakan soal sesuai level, jalankan test
+1. **Sesi 5 menit** setiap hari — pahami & latih jelaskan 1 konsep
+2. **Cek cepat** seminggu sekali — ukur progress
+3. **Latihan kode** — opsional
 
-## API
-
-| Method | Path | Body | Result |
-| --- | --- | --- | --- |
-| `GET` | `/api/curriculum` | — | questions, exercises, progress |
-| `POST` | `/api/assessment` | `{ answers: Record<questionId, optionIndex> }` | `{ result, progress }` |
-| `GET` | `/api/progress` | — | `{ progress }` |
-| `POST` | `/api/progress` | `{ action: "complete" \| "attempt" \| "reset", exerciseId? }` | `{ progress }` |
-
-## Scripts
-
-| Command | What it does |
-| --- | --- |
-| `npm run dev` | Start the Next.js dev server |
-| `npm run build` | Production build |
-| `npm start` | Serve the production build |
-| `npm run lint` | ESLint |
-| `npm run typecheck` | TypeScript (`tsc --noEmit`) |
+Progress in-memory (`globalThis`) — reset saat server restart.

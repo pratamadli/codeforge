@@ -1,3 +1,4 @@
+import { CONCEPT_BITES } from "@/lib/concept-bites";
 import { TRAINING_EXERCISES } from "@/lib/curriculum";
 import type {
   AssessmentResult,
@@ -15,7 +16,9 @@ const globalForProgress = globalThis as unknown as {
 const emptyProgress = (): UserProgress => ({
   assessment: null,
   completedExercises: [],
+  completedConcepts: [],
   exerciseAttempts: {},
+  sessionsCompleted: 0,
   updatedAt: new Date().toISOString(),
 });
 
@@ -25,13 +28,34 @@ const store: ProgressStore =
     progress: emptyProgress(),
   });
 
+function normalizeProgress(raw: UserProgress): UserProgress {
+  const assessment = raw.assessment
+    ? { ...raw.assessment, mode: raw.assessment.mode ?? "full" }
+    : null;
+
+  return {
+    ...emptyProgress(),
+    ...raw,
+    assessment,
+    completedExercises: raw.completedExercises ?? [],
+    completedConcepts: raw.completedConcepts ?? [],
+    exerciseAttempts: raw.exerciseAttempts ?? {},
+    sessionsCompleted: raw.sessionsCompleted ?? 0,
+  };
+}
+
 export function getProgress(): UserProgress {
-  return { ...store.progress, completedExercises: [...store.progress.completedExercises] };
+  store.progress = normalizeProgress(store.progress);
+  return {
+    ...store.progress,
+    completedExercises: [...store.progress.completedExercises],
+    completedConcepts: [...store.progress.completedConcepts],
+  };
 }
 
 export function saveAssessmentResult(result: AssessmentResult): UserProgress {
   store.progress = {
-    ...store.progress,
+    ...normalizeProgress(store.progress),
     assessment: result,
     updatedAt: new Date().toISOString(),
   };
@@ -46,8 +70,39 @@ export function markExerciseComplete(exerciseId: string): UserProgress | null {
   completed.add(exerciseId);
 
   store.progress = {
-    ...store.progress,
+    ...normalizeProgress(store.progress),
     completedExercises: [...completed],
+    updatedAt: new Date().toISOString(),
+  };
+  return getProgress();
+}
+
+export function markConceptComplete(conceptId: string): UserProgress | null {
+  const exists = CONCEPT_BITES.some((c) => c.id === conceptId);
+  if (!exists) return null;
+
+  const completed = new Set(store.progress.completedConcepts);
+  completed.add(conceptId);
+
+  store.progress = {
+    ...normalizeProgress(store.progress),
+    completedConcepts: [...completed],
+    updatedAt: new Date().toISOString(),
+  };
+  return getProgress();
+}
+
+export function completeSession(conceptId: string): UserProgress | null {
+  const exists = CONCEPT_BITES.some((c) => c.id === conceptId);
+  if (!exists) return null;
+
+  const completed = new Set(store.progress.completedConcepts);
+  completed.add(conceptId);
+
+  store.progress = {
+    ...normalizeProgress(store.progress),
+    completedConcepts: [...completed],
+    sessionsCompleted: store.progress.sessionsCompleted + 1,
     updatedAt: new Date().toISOString(),
   };
   return getProgress();
@@ -61,7 +116,7 @@ export function recordExerciseAttempt(exerciseId: string): UserProgress | null {
   attempts[exerciseId] = (attempts[exerciseId] ?? 0) + 1;
 
   store.progress = {
-    ...store.progress,
+    ...normalizeProgress(store.progress),
     exerciseAttempts: attempts,
     updatedAt: new Date().toISOString(),
   };
