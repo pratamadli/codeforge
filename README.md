@@ -1,8 +1,15 @@
 # CodeForge
 
-A tiny snippet forge — create and browse code snippets.
+Platform untuk **menilai** dan **melatih** skill ngoding kamu.
 
-Heat a title, pick a language, and strike code into an in-memory library. Search, filter, copy, or quench pieces from the rack.
+Assessment singkat mengukur level (Pemula → Mahir), lalu latihan coding disesuaikan dengan kelemahan dan topik yang perlu diperkuat.
+
+## Fitur
+
+- **Assessment** — 12 pertanyaan (konsep, baca kode, algoritma, async, pola)
+- **Level & breakdown** — skor per topik + rekomendasi fokus latihan
+- **Latihan coding** — soal JavaScript dengan hint, test otomatis, dan solusi
+- **Progress** — lacak latihan selesai dan percobaan
 
 ## Stack
 
@@ -11,7 +18,7 @@ Heat a title, pick a language, and strike code into an in-memory library. Search
 - TypeScript
 - Tailwind CSS 4
 
-Persistence lives in process memory (`globalThis`) so snippets survive Next.js hot reloads during development, but reset when the server restarts.
+Progress disimpan di memori proses (`globalThis`) — bertahan saat hot reload, reset saat server restart.
 
 ## Setup
 
@@ -20,7 +27,23 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Buka [http://localhost:3000](http://localhost:3000).
+
+## Alur pengguna
+
+1. **Beranda** — overview dan stat progress
+2. **Assessment** — jawab 12 pertanyaan
+3. **Hasil** — level, skor, breakdown topik
+4. **Latihan** — kerjakan soal sesuai level, jalankan test
+
+## API
+
+| Method | Path | Body | Result |
+| --- | --- | --- | --- |
+| `GET` | `/api/curriculum` | — | questions, exercises, progress |
+| `POST` | `/api/assessment` | `{ answers: Record<questionId, optionIndex> }` | `{ result, progress }` |
+| `GET` | `/api/progress` | — | `{ progress }` |
+| `POST` | `/api/progress` | `{ action: "complete" \| "attempt" \| "reset", exerciseId? }` | `{ progress }` |
 
 ## Scripts
 
@@ -31,13 +54,3 @@ Open [http://localhost:3000](http://localhost:3000).
 | `npm start` | Serve the production build |
 | `npm run lint` | ESLint |
 | `npm run typecheck` | TypeScript (`tsc --noEmit`) |
-
-## API
-
-| Method | Path | Body | Result |
-| --- | --- | --- | --- |
-| `GET` | `/api/snippets` | — | `{ snippets: Snippet[] }` |
-| `POST` | `/api/snippets` | `{ title, language?, code }` | `201 { snippet }` |
-| `DELETE` | `/api/snippets/:id` | — | `{ ok: true }` |
-
-`title` and `code` are required on create. `language` defaults to `plaintext`.
