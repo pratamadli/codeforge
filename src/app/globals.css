@@ -9,6 +9,8 @@
   --steel-raised: #1f1812;
   --steel-border: #3a2f24;
   --muted: #b7a899;
+  --good: #7dce82;
+  --bad: #ff6b5a;
 }
 
 @theme inline {
@@ -20,6 +22,8 @@
   --color-steel-raised: var(--steel-raised);
   --color-steel-border: var(--steel-border);
   --color-muted: var(--muted);
+  --color-good: var(--good);
+  --color-bad: var(--bad);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -36,4 +40,111 @@ body {
 
 ::selection {
   background: rgba(255, 122, 24, 0.35);
+}
+
+.md {
+  line-height: 1.7;
+  color: #e8ddd0;
+}
+
+.md > *:first-child {
+  margin-top: 0;
+}
+
+.md h1 {
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.8rem;
+}
+
+.md h2 {
+  font-size: 1.15rem;
+  font-weight: 650;
+  margin: 1.6rem 0 0.55rem;
+  color: var(--ember-soft);
+}
+
+.md h3 {
+  font-size: 1rem;
+  font-weight: 650;
+  margin: 1.2rem 0 0.4rem;
+}
+
+.md p,
+.md ul,
+.md ol,
+.md table {
+  margin: 0.75rem 0;
+}
+
+.md ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+}
+
+.md ol {
+  list-style: decimal;
+  padding-left: 1.25rem;
+}
+
+.md li + li {
+  margin-top: 0.25rem;
+}
+
+.md a {
+  color: var(--ember);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.md code {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.88em;
+  background: rgba(255, 122, 24, 0.1);
+  border: 1px solid var(--steel-border);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+}
+
+.md pre {
+  background: #0e0c0a;
+  border: 1px solid var(--steel-border);
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+  overflow-x: auto;
+}
+
+.md pre code {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: 0.85rem;
+}
+
+.md table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.md th,
+.md td {
+  border: 1px solid var(--steel-border);
+  padding: 0.4rem 0.6rem;
+  text-align: left;
+}
+
+.md th {
+  background: var(--steel-raised);
+}
+
+.md strong {
+  color: #fff7ee;
+}
+
+.md blockquote {
+  border-left: 3px solid var(--ember);
+  padding-left: 0.85rem;
+  color: var(--muted);
 }

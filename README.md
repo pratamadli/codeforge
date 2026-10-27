@@ -1,38 +1,45 @@
-# CodeForge
+# Codexercise
 
-Platform assess & train skill ngoding — **disusun untuk stack kamu**.
+Latihan coding dari beginner sampai interview: materi Indonesia, soal JS/TS gaya LeetCode, judge di server, pembahasan, progress per user.
 
-## Prioritas stack
+## Stack
 
-### Utama
-React · Next.js · Node.js · Vitest/RTL · TypeScript · Express · Performance
+Next.js App Router · TypeScript · Tailwind · MongoDB / Mongoose
 
-### Menengah
-NestJS · Nuxt · Flutter
+## Jalan lokal
 
-### Rendah
-Go · Laravel · Python
+1. MongoDB di `127.0.0.1:27017` (Docker: `docker compose up -d`).
+2. Salin env:
 
-## Fitur
+```bash
+cp .env.example .env
+```
 
-- **Sesi 5 menit** — konsep per stack, penjelasan awam + tips interview
-- **Cek cepat** — 5 pertanyaan stack utama (~3 menit)
-- **Assessment lengkap** — 12 pertanyaan (~10 menit)
-- **Latihan kode** — opsional, TS/React/Node themed
+Isi `AUTH_SECRET` dengan string acak yang panjang.
 
-## Setup
+3. Install, seed, jalan:
 
 ```bash
 npm install
+npm run seed
 npm run dev
 ```
 
 Buka [http://localhost:3000](http://localhost:3000).
 
-## Alur disarankan
+Seed bisa diulang (`npm run seed`) — kurikulum diisi ulang dari awal, submission/progress dihapus, user demo di-upsert.
 
-1. **Sesi 5 menit/hari** — mulai dari prioritas utama (React → Next → …)
-2. **Cek cepat** seminggu sekali
-3. Latihan kode kalau ada waktu
+### Akun demo
 
-Progress in-memory — reset saat server restart.
+- Email: `demo@codexercise.dev`
+- Password: `Latihan123`
+
+## Alur
+
+Daftar / masuk → kurikulum (track → modul) → baca materi → kerjakan soal di Monaco → **Jalankan contoh** (sample tests) → **Kumpulkan** (hidden tests) → pembahasan → progress.
+
+Hidden tests dan solusi tidak dikirim ke client sebelum submit. Setelah submit pertama, pembahasan (termasuk kode referensi) tampil.
+
+## Di luar v1
+
+Generate soal AI, React preview, dan sandbox Express/Mongo — belum.
