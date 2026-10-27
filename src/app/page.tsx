@@ -4,7 +4,7 @@ import { getCurrentUser } from "@/lib/auth";
 
 export default async function HomePage() {
   const user = await getCurrentUser();
-  if (user) redirect("/kurikulum");
+  if (user) redirect("/dashboard");
 
   return (
     <main className="mx-auto max-w-3xl px-4 py-20">
@@ -19,13 +19,13 @@ export default async function HomePage() {
       <div className="mt-8 flex flex-wrap gap-3">
         <Link
           href="/daftar"
-          className="rounded-lg bg-ember px-5 py-2.5 font-medium text-black hover:bg-ember-soft"
+          className="rounded-md bg-ember px-5 py-2.5 font-medium text-black hover:bg-ember-soft"
         >
           Daftar gratis
         </Link>
         <Link
           href="/masuk"
-          className="rounded-lg border border-steel-border px-5 py-2.5 hover:border-ember"
+          className="rounded-md border border-steel-border px-5 py-2.5 hover:border-ember"
         >
           Masuk
         </Link>
@@ -37,7 +37,7 @@ export default async function HomePage() {
           ["Pembahasan ramah", "Analogi dulu, baru kode. Muncul setelah submit pertama."],
           ["Progress per user", "Materi selesai dan soal lulus tidak ketuker antar akun."],
         ].map(([title, body]) => (
-          <li key={title} className="rounded-xl border border-steel-border bg-steel/50 p-4">
+          <li key={title} className="rounded-xl border border-steel-border bg-steel p-4">
             <p className="font-medium">{title}</p>
             <p className="mt-1 text-muted">{body}</p>
           </li>

@@ -1,16 +1,41 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0b0907;
-  --foreground: #f4ece3;
+  --background: #f6f4f1;
+  --foreground: #171411;
+  --ember: #e56b10;
+  --ember-soft: #c45c0e;
+  --steel: #ffffff;
+  --steel-raised: #f3efe9;
+  --steel-border: #e4ddd4;
+  --muted: #6d635a;
+  --good: #1f8a4c;
+  --bad: #c43c2c;
+  --sidebar: #f3efe9;
+  --heat-0: #e7e1d8;
+  --heat-1: #f3c7a0;
+  --heat-2: #e8924a;
+  --heat-3: #e56b10;
+  --heat-4: #b84d08;
+}
+
+.dark {
+  --background: #0c0e12;
+  --foreground: #ece8e3;
   --ember: #ff7a18;
   --ember-soft: #ffb347;
-  --steel: #16110d;
-  --steel-raised: #1f1812;
-  --steel-border: #3a2f24;
-  --muted: #b7a899;
-  --good: #7dce82;
+  --steel: #14181f;
+  --steel-raised: #1b2029;
+  --steel-border: #2a3140;
+  --muted: #9aa3b2;
+  --good: #5dcc86;
   --bad: #ff6b5a;
+  --sidebar: #10141b;
+  --heat-0: #1b2029;
+  --heat-1: #3d2a18;
+  --heat-2: #7a4314;
+  --heat-3: #c45c10;
+  --heat-4: #ff7a18;
 }
 
 @theme inline {
@@ -24,15 +49,13 @@
   --color-muted: var(--muted);
   --color-good: var(--good);
   --color-bad: var(--bad);
+  --color-sidebar: var(--sidebar);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 body {
-  background:
-    radial-gradient(1200px 500px at 10% -10%, rgba(255, 122, 24, 0.18), transparent 55%),
-    radial-gradient(900px 420px at 100% 0%, rgba(255, 179, 71, 0.08), transparent 50%),
-    var(--background);
+  background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   min-height: 100%;
@@ -44,7 +67,7 @@ body {
 
 .md {
   line-height: 1.7;
-  color: #e8ddd0;
+  color: var(--foreground);
 }
 
 .md > *:first-child {
@@ -101,16 +124,16 @@ body {
 .md code {
   font-family: var(--font-geist-mono), ui-monospace, monospace;
   font-size: 0.88em;
-  background: rgba(255, 122, 24, 0.1);
+  background: color-mix(in srgb, var(--ember) 12%, transparent);
   border: 1px solid var(--steel-border);
   padding: 0.1em 0.35em;
   border-radius: 4px;
 }
 
 .md pre {
-  background: #0e0c0a;
+  background: var(--steel-raised);
   border: 1px solid var(--steel-border);
-  border-radius: 10px;
+  border-radius: 8px;
   padding: 1rem 1.1rem;
   overflow-x: auto;
 }
@@ -140,7 +163,7 @@ body {
 }
 
 .md strong {
-  color: #fff7ee;
+  color: var(--foreground);
 }
 
 .md blockquote {

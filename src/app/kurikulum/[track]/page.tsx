@@ -13,17 +13,17 @@ export default async function TrackPage({ params }: { params: Promise<{ track: s
   const summary = await summarizeProgress(user.id);
 
   return (
-    <main className="mx-auto max-w-4xl px-4 py-10">
+    <main className="mx-auto max-w-4xl px-4 py-8 lg:px-8">
       <Link href="/kurikulum" className="text-sm text-muted hover:text-ember">
         ← Semua track
       </Link>
-      <h1 className="mt-3 text-3xl font-semibold tracking-tight">{track.title}</h1>
+      <h1 className="mt-3 text-2xl font-semibold tracking-tight">{track.title}</h1>
       <p className="mt-2 text-muted">{track.description}</p>
 
-      <div className="mt-10 space-y-8">
+      <div className="mt-8 space-y-8">
         {track.modules.map((mod) => (
           <section key={mod.id}>
-            <h2 className="text-xl font-medium">{mod.title}</h2>
+            <h2 className="text-lg font-medium">{mod.title}</h2>
             <p className="mt-1 mb-3 text-sm text-muted">{mod.description}</p>
             <ul className="divide-y divide-steel-border overflow-hidden rounded-xl border border-steel-border">
               {mod.lessons.map((lesson) => {
@@ -32,7 +32,7 @@ export default async function TrackPage({ params }: { params: Promise<{ track: s
                   <li key={lesson.id}>
                     <Link
                       href={`/pelajaran/${lesson.slug}`}
-                      className="flex items-center justify-between gap-3 bg-steel/40 px-4 py-3 hover:bg-steel-raised"
+                      className="flex items-center justify-between gap-3 bg-steel px-4 py-3 hover:bg-steel-raised"
                     >
                       <span>
                         <span className="mr-2 rounded bg-steel-raised px-2 py-0.5 text-xs text-muted">
@@ -40,7 +40,7 @@ export default async function TrackPage({ params }: { params: Promise<{ track: s
                         </span>
                         {lesson.title}
                       </span>
-                      <span className={done ? "text-good text-xs" : "text-xs text-muted"}>
+                      <span className={done ? "text-xs text-good" : "text-xs text-muted"}>
                         {done ? "Selesai" : "Baca"}
                       </span>
                     </Link>
@@ -55,7 +55,7 @@ export default async function TrackPage({ params }: { params: Promise<{ track: s
                   <li key={problem.id}>
                     <Link
                       href={`/soal/${problem.slug}`}
-                      className="flex items-center justify-between gap-3 bg-steel/40 px-4 py-3 hover:bg-steel-raised"
+                      className="flex items-center justify-between gap-3 bg-steel px-4 py-3 hover:bg-steel-raised"
                     >
                       <span>
                         <span className="mr-2 rounded bg-ember/15 px-2 py-0.5 text-xs text-ember-soft">
@@ -68,9 +68,7 @@ export default async function TrackPage({ params }: { params: Promise<{ track: s
                       </span>
                       <span
                         className={
-                          state?.status === "solved"
-                            ? "text-xs text-good"
-                            : "text-xs text-muted"
+                          state?.status === "solved" ? "text-xs text-good" : "text-xs text-muted"
                         }
                       >
                         {badge}

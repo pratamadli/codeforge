@@ -36,7 +36,7 @@ export function AuthForm({ mode }: { mode: Mode }) {
       setError(data.error || "Gagal. Coba lagi.");
       return;
     }
-    const next = new URLSearchParams(window.location.search).get("next") || "/kurikulum";
+    const next = new URLSearchParams(window.location.search).get("next") || "/dashboard";
     window.location.assign(next);
   }
 

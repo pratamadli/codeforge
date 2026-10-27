@@ -2,7 +2,14 @@ import { NextResponse, type NextRequest } from "next/server";
 import { jwtVerify } from "jose";
 
 const SESSION_COOKIE = "ce_session";
-const PROTECTED = [/^\/kurikulum/, /^\/pelajaran/, /^\/soal/, /^\/progress/];
+const PROTECTED = [
+  /^\/dashboard/,
+  /^\/kurikulum/,
+  /^\/pelajaran/,
+  /^\/soal/,
+  /^\/progress/,
+  /^\/latihan/,
+];
 
 function secret() {
   const value = process.env.AUTH_SECRET;
@@ -33,12 +40,23 @@ export async function middleware(req: NextRequest) {
   }
 
   if (authed && (pathname === "/masuk" || pathname === "/daftar")) {
-    return NextResponse.redirect(new URL("/kurikulum", req.url));
+    return NextResponse.redirect(new URL("/dashboard", req.url));
   }
 
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/kurikulum/:path*", "/pelajaran/:path*", "/soal/:path*", "/progress", "/masuk", "/daftar"],
+  matcher: [
+    "/dashboard",
+    "/dashboard/:path*",
+    "/kurikulum/:path*",
+    "/pelajaran/:path*",
+    "/soal/:path*",
+    "/progress",
+    "/latihan",
+    "/latihan/:path*",
+    "/masuk",
+    "/daftar",
+  ],
 };

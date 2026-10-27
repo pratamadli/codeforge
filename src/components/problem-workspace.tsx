@@ -63,8 +63,8 @@ export function ProblemWorkspace(props: Props) {
   }
 
   return (
-    <div className="grid min-h-[calc(100vh-3.5rem)] lg:grid-cols-2">
-      <section className="border-b border-steel-border p-5 lg:border-b-0 lg:border-r lg:overflow-y-auto">
+    <div className="grid h-full min-h-0 lg:grid-cols-2">
+      <section className="min-h-0 overflow-y-auto border-b border-steel-border p-5 lg:border-b-0 lg:border-r">
         <p className="mb-1 text-xs uppercase tracking-wide text-muted">
           {props.language === "ts" ? "TypeScript" : "JavaScript"} · {props.functionName}
         </p>
@@ -93,7 +93,7 @@ export function ProblemWorkspace(props: Props) {
         )}
       </section>
 
-      <section className="flex min-h-[28rem] flex-col bg-[#0e0c0a]">
+      <section className="flex min-h-[28rem] min-h-0 flex-col bg-[#0e0c0a] lg:min-h-0">
         <div className="min-h-[16rem] flex-1">
           <CodeEditor
             value={code}
