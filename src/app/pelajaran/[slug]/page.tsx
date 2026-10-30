@@ -15,7 +15,7 @@ export default async function LessonPage({ params }: { params: Promise<{ slug: s
   const done = lessonDone(progress, lesson.id);
 
   return (
-    <main className="mx-auto max-w-3xl px-4 py-10">
+    <main className="mx-auto max-w-3xl px-4 py-8 lg:px-8">
       <Link href={`/kurikulum/${lesson.trackSlug}`} className="text-sm text-muted hover:text-ember">
         ← {lesson.trackTitle}
       </Link>
