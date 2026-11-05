@@ -1,3 +1,4 @@
+import { RENCANA_2_MINGGU } from "@/content/contekan";
 import type { TrackTree } from "@/lib/content";
 import type { LocalProgress } from "@/lib/progress";
 
@@ -188,8 +189,10 @@ export function buildDashboard(tree: TrackTree[], progress: LocalProgress): Dash
         trackTitle: match.trackTitle,
         hint:
           match.kind === "problem" && progress.problems[match.slug]?.status === "attempted"
-            ? `Percobaan terakhir belum lulus · ${match.moduleTitle}`
-            : `${match.moduleTitle} · terakhir dibuka`,
+            ? `Belum lulus — tulis ulang dari nol · ${match.moduleTitle}`
+            : match.slug === "bab-01-proses-thread"
+              ? "Bab 1 revisi: mulai dari proses & thread"
+              : `${match.moduleTitle} · terakhir dibuka`,
       };
     }
   }
@@ -200,19 +203,34 @@ export function buildDashboard(tree: TrackTree[], progress: LocalProgress): Dash
       title: nextOpen.title,
       kind: nextOpen.kind,
       trackTitle: nextOpen.trackTitle,
-      hint: `${nextOpen.moduleTitle} · ${nextOpen.kind === "lesson" ? "materi berikutnya" : "soal berikutnya"}`,
+      hint:
+        !progress.lastItem
+          ? `Rencana 14.2 · ${RENCANA_2_MINGGU[0]?.title ?? "mulai dari proses & thread"}`
+          : nextOpen.slug === "bab-01-proses-thread"
+            ? "Bab 1 revisi: proses & thread sebelum closure"
+            : `${nextOpen.moduleTitle} · ${nextOpen.kind === "lesson" ? "materi berikutnya" : "soal berikutnya"}`,
     };
   }
 
-  const focus = ordered
-    .filter((item) => !item.done && item.href !== continueItem?.href)
-    .slice(0, 4)
-    .map((item) => ({
-      href: item.href,
-      title: item.title,
-      kind: item.kind,
-      meta: `${item.trackTitle} · ${item.kind === "lesson" ? "Materi" : "Soal"}`,
-    }));
+  const focus: FocusItem[] = !progress.lastItem
+    ? RENCANA_2_MINGGU.slice(0, 4).map((row) => ({
+        href: row.href,
+        title: row.title,
+        kind: "lesson",
+        meta: `Rencana 14.2 · Hari ${row.hari}`,
+      }))
+    : ordered
+        .filter((item) => !item.done && item.href !== continueItem?.href)
+        .slice(0, 4)
+        .map((item) => ({
+          href: item.href,
+          title: item.title,
+          kind: item.kind,
+          meta:
+            item.slug === "bab-01-proses-thread"
+              ? "Bab 1 · proses & thread (revisi)"
+              : `${item.trackTitle} · ${item.kind === "lesson" ? "Materi" : "Soal"}`,
+        }));
 
   const recent: ActivityItem[] = progress.submissions.slice(0, 8).map((row) => ({
     href: `/soal/${row.slug}`,

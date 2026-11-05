@@ -33,8 +33,8 @@ export function DashboardView({ tree }: { tree: TrackTree[] }) {
         <div>
           <h1 className="text-2xl font-semibold tracking-tight">Senior Full Stack (MERN)</h1>
           <p className="mt-1 text-muted">
-            Target seperti Bookipi: ownership produksi, transaksi, RCA, trade-off. Progress di
-            browser ini — tanpa akun.
+            Revisi panduan 49 hlm: Bab 1 mulai dari proses & thread. Target Bookipi — ownership,
+            transaksi, RCA. Progress di browser ini, tanpa akun.
           </p>
         </div>
         <Link
@@ -82,6 +82,7 @@ export function DashboardView({ tree }: { tree: TrackTree[] }) {
 
         <div className="rounded-xl border border-steel-border bg-steel p-5 lg:col-span-2">
           <h2 className="text-sm font-medium">Fokus hari ini</h2>
+          <p className="mt-1 text-xs text-muted">Mengikuti rencana 2 minggu (bab 14.2) jika belum ada item terakhir.</p>
           {data.focus.length === 0 ? (
             <p className="mt-3 text-sm text-muted">Tidak ada item terbuka. Cek kurikulum.</p>
           ) : (

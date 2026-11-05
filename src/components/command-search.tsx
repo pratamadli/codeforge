@@ -9,6 +9,7 @@ const KIND: Record<SearchHit["kind"], string> = {
   track: "Track",
   lesson: "Materi",
   problem: "Soal",
+  review: "Review",
 };
 
 export function CommandSearch({ catalog }: { catalog: SearchHit[] }) {
@@ -62,7 +63,7 @@ export function CommandSearch({ catalog }: { catalog: SearchHit[] }) {
         className="flex min-w-0 items-center gap-2 rounded-md border border-steel-border bg-steel px-3 py-1.5 text-sm text-muted hover:border-ember"
       >
         <IconSearch className="h-4 w-4 shrink-0" />
-        <span className="hidden truncate sm:inline">Cari materi atau soal</span>
+        <span className="hidden truncate sm:inline">Cari materi, soal, atau review</span>
         <kbd className="hidden rounded border border-steel-border px-1.5 text-[10px] md:inline">⌘K</kbd>
       </button>
       {open && (
@@ -80,7 +81,7 @@ export function CommandSearch({ catalog }: { catalog: SearchHit[] }) {
                 ref={inputRef}
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Cari track, materi, atau soal…"
+                placeholder="Cari track, materi, soal, atau review…"
                 className="w-full bg-transparent py-3 text-sm outline-none"
               />
             </div>
@@ -89,7 +90,7 @@ export function CommandSearch({ catalog }: { catalog: SearchHit[] }) {
                 <li className="px-4 py-6 text-sm text-muted">Tidak ada hasil.</li>
               )}
               {results.map((hit) => (
-                <li key={hit.href}>
+                <li key={`${hit.kind}-${hit.href}-${hit.title}`}>
                   <button
                     type="button"
                     onClick={() => go(hit.href)}

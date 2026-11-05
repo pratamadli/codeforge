@@ -2,8 +2,10 @@
 
 import Link from "next/link";
 import { useEffect } from "react";
+import { FlashDrill } from "@/components/flash-drill";
 import { LessonCompleteButton } from "@/components/lesson-complete-button";
 import { Markdown } from "@/components/markdown";
+import { STUDI_KASUS } from "@/content/studi-kasus";
 import { useLocalProgress } from "@/hooks/use-local-progress";
 
 export function LessonView({
@@ -38,6 +40,29 @@ export function LessonView({
       <article className="mt-4">
         <Markdown content={markdown} />
       </article>
+      {slug === "bab-10-studi-kasus" && (
+        <div className="mt-8">
+          <FlashDrill
+            storageKey="studi-kasus-10"
+            cards={STUDI_KASUS.map((kasus) => ({
+              id: kasus.id,
+              title: kasus.title,
+              prompt: kasus.prompt,
+              answer: kasus.answer,
+            }))}
+            promptLabel="Jelaskan 3–5 menit seperti di interview, baru buka kerangka."
+          />
+        </div>
+      )}
+      {slug === "bab-14-contekan" && (
+        <p className="mt-6 text-sm">
+          Drill kartu 14.1 ada di{" "}
+          <Link href="/review" className="text-ember hover:underline">
+            Review
+          </Link>
+          : jawab lantang, buka jawaban satu kalimat, nilai Lancar / Masih goyang.
+        </p>
+      )}
       <div className="mt-10">
         {ready ? (
           <LessonCompleteButton done={done} onComplete={() => completeLesson(slug)} />

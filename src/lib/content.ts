@@ -1,6 +1,8 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { curriculum } from "@/content/curriculum";
+import { CONTEKAN_CARDS } from "@/content/contekan";
+import { STUDI_KASUS } from "@/content/studi-kasus";
 import { getBankProblem } from "@/content/bank";
 import type { SeedTrack } from "@/content/types";
 
@@ -155,7 +157,7 @@ export function getJudgeProblem(slug: string) {
 export type SearchHit = {
   href: string;
   title: string;
-  kind: "track" | "lesson" | "problem";
+  kind: "track" | "lesson" | "problem" | "review";
   subtitle: string;
 };
 
@@ -187,6 +189,28 @@ export function getSearchCatalog(): SearchHit[] {
         });
       }
     }
+  }
+  hits.push({
+    href: "/review",
+    title: "Review · Contekan cepat",
+    kind: "review",
+    subtitle: "Bab 14.1 · jawab lantang, bukan pilihan ganda",
+  });
+  for (const card of CONTEKAN_CARDS) {
+    hits.push({
+      href: "/review",
+      title: card.q,
+      kind: "review",
+      subtitle: "Review · 14.1",
+    });
+  }
+  for (const kasus of STUDI_KASUS) {
+    hits.push({
+      href: `/pelajaran/bab-10-studi-kasus#${kasus.id}`,
+      title: kasus.title,
+      kind: "review",
+      subtitle: "Bab 10 · drill verbal",
+    });
   }
   return hits;
 }

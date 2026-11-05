@@ -5,15 +5,20 @@ export const curriculum: SeedTrack[] = [
     slug: "interview-fullstack",
     title: "Panduan Interview Fullstack",
     description:
-      "Spine 14 bab untuk interview Senior Full Stack (MERN) bergaya Bookipi: production ownership, desain API, transaksi Mongo, RCA, dan trade-off arsitektur — bukan track tutorial junior.",
+      "Revisi 49 hlm, spine 14 bab untuk Senior Full Stack (MERN) bergaya Bookipi. Bab 1 mulai proses/thread. Production ownership, desain API, transaksi Mongo, RCA — bukan tutorial junior.",
     order: 1,
     modules: [
       {
         slug: "bab-01-javascript",
         title: "Bab 1 · Fondasi JavaScript",
-        description: "Closure, event loop, tipe, Promise, immutability — sumber hampir semua pertanyaan React dan Node.",
+        description:
+          "Revisi panduan: proses & thread dulu, baru sync/async, closure, dan event loop. Fondasi semua pertanyaan React dan Node.",
         order: 1,
-        lessons: [{ slug: "bab-01-javascript", title: "Fondasi JavaScript yang sering ditanya", order: 1 }],
+        lessons: [
+          { slug: "bab-01-proses-thread", title: "Proses dan thread", order: 1 },
+          { slug: "bab-01-sync-async", title: "Synchronous vs asynchronous", order: 2 },
+          { slug: "bab-01-javascript", title: "Closure, event loop, dan fondasi lain", order: 3 },
+        ],
         problems: [],
       },
       {
@@ -35,11 +40,13 @@ export const curriculum: SeedTrack[] = [
       {
         slug: "bab-04-nodejs",
         title: "Bab 4 · Node.js",
-        description: "Runtime produksi: event loop, scaling, error handling, dan RCA saat proses macet.",
+        description:
+          "Revisi panduan 4.1–4.16: proses/thread Node, fase event loop, modul/fs/npm, error, stream — plus RCA produksi.",
         order: 4,
         lessons: [
-          { slug: "bab-04-nodejs", title: "Node.js di luar browser", order: 1 },
-          { slug: "bab-04-produksi-rca", title: "Ownership produksi & troubleshooting", order: 2 },
+          { slug: "bab-04-nodejs", title: "Node.js: runtime, core, event loop", order: 1 },
+          { slug: "bab-04-nodejs-dalam", title: "Modul, fs, error, dan stream", order: 2 },
+          { slug: "bab-04-produksi-rca", title: "Ownership produksi & troubleshooting", order: 3 },
         ],
         problems: [],
       },
@@ -95,10 +102,11 @@ export const curriculum: SeedTrack[] = [
       {
         slug: "bab-10-studi-kasus",
         title: "Bab 10 · Studi kasus senior",
-        description: "Trade-off arsitektur: pembayaran Stripe-like, skala, cache, queue — sebut dua opsi.",
+        description:
+          "10 studi kasus sebagai drill verbal: pikirkan lantang, baru buka kerangka senior. Plus Stripe-like.",
         order: 10,
         lessons: [
-          { slug: "bab-10-studi-kasus", title: "Cara berpikir senior & architect", order: 1 },
+          { slug: "bab-10-studi-kasus", title: "Studi kasus: drill verbal", order: 1 },
           { slug: "bab-10-stripe", title: "Integrasi pembayaran (Stripe-like)", order: 2 },
         ],
         problems: [],
@@ -324,7 +332,8 @@ export const curriculum: SeedTrack[] = [
       {
         slug: "bab-14-contekan",
         title: "Bab 14 · Contekan cepat",
-        description: "Jawaban satu kalimat dan rencana belajar 2 minggu. Baca sebelum interview.",
+        description:
+          "Review 14.1: pertanyaan cepat + jawaban satu kalimat (bukan kuis). Plus rencana 2 minggu.",
         order: 14,
         lessons: [{ slug: "bab-14-contekan", title: "Contekan cepat sebelum interview", order: 1 }],
         problems: [],

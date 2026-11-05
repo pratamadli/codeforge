@@ -1,18 +1,20 @@
 # Contekan cepat sebelum interview
 
-Baca ini pagi-pagi sebelum masuk Zoom. Kalimat pendek, bukan pengganti bab 1–13.
+Baca ini pagi-pagi sebelum masuk Zoom. Kalimat pendek, **bukan pengganti bab 1–13**.
 
-## Pertanyaan cepat
+Drill 14.1 ada di **Review** di sidebar: pertanyaan saja → jawab lantang 20–30 detik → buka jawaban satu kalimat → nilai Lancar atau Masih goyang. Kartu goyang diprioritaskan. Bukan pilihan ganda.
+
+## 14.1 Pertanyaan cepat
 
 | Pertanyaan | Jawaban singkat |
 | --- | --- |
 | State vs props? | State milik komponen dan bisa berubah. Props dari parent, read-only. |
-| Kenapa key di list? | Agar React kenali item mana yang berubah/pindah. Pakai ID stabil, bukan index. |
+| Kenapa key di list? | Agar React kenali item mana yang berubah/pindah/dihapus. Pakai ID stabil, bukan index. |
 | Kapan re-render? | State berubah, parent re-render, context berubah, props berubah referensi. |
 | Hydration? | React di browser menghidupkan HTML server: tempel handler + state. |
 | SSR vs SSG vs ISR? | Tiap request / saat build / build lalu diperbarui berkala. |
 | Server vs Client Component? | Server: tanpa JS ke browser, akses data langsung. Client: interaktif, hooks. |
-| Node single-thread? | JS satu thread. I/O oleh libuv. CPU berat: worker. Banyak core: banyak proses. |
+| Node single-thread? | JS satu thread. I/O oleh libuv/OS. CPU berat: worker. Banyak core: banyak proses. |
 | Microtask vs macrotask? | Microtask (Promise) dikosongkan semua dulu, baru satu macrotask per putaran. |
 | Middleware Express? | Fungsi `(req, res, next)` dalam rantai request. |
 | JWT vs session? | JWT stateless tapi sulit dicabut. Session mudah dicabut, butuh store. |
@@ -23,24 +25,20 @@ Baca ini pagi-pagi sebelum masuk Zoom. Kalimat pendek, bukan pengganti bab 1–1
 | Transaksi ganda? | Idempotency key + state machine + webhook idempoten. |
 | Monolith vs microservices? | Mulai modular monolith. Pecah bila ada alasan skala/tim/rilis. |
 | ACID? | Atomic, Consistent, Isolated, Durable. |
-| Cegah invoice dobel? | Unique idempotency key + transisi status + webhook `event.id` unik. |
-| Retry pembayaran? | Hanya dengan kunci yang sama; timeout → retrieve, jangan create buta. |
-| Kapan transaksi Mongo? | Multi-dokumen yang harus commit bersama. Satu dok = atomic update cukup. |
-| RCA produksi? | Sinyal dulu (log/trace), mitigasi (rollback/flag), baru akar + tes pencegahan. |
-| Stripe webhook? | Signature, body raw, persist `event.id`, 200 cepat, kerja di worker. |
-| Deploy AWS tipikal? | Image → ECR → ECS/ALB → Atlas; healthcheck; rollback ke sha sebelumnya. |
 
-## Rencana 2 minggu
+Bab 1 revisi menambah proses vs thread sebelum closure. Itu tidak ada baris sendiri di 14.1 — jawabannya tercakup di "Node single-thread?" plus materi 1.1.
+
+## 14.2 Rencana 2 minggu
 
 | Hari | Fokus |
 | --- | --- |
-| 1–2 | JavaScript (bab 1) + soal 1–7 tanpa AI |
+| 1–2 | JavaScript (bab 1, mulai proses/thread) + soal 1–7 tanpa AI |
 | 3–5 | React (bab 2) soal 8–10, lalu TypeScript (bab 7) |
 | 6–7 | Next.js (bab 3): rendering, Server/Client, caching, auth |
-| 8–9 | Node + Express (bab 4–5): API ownership, RCA, soal 11–13, tes jalur uang (bab 8) |
-| 10–11 | Mongo transaksi/duplikat (bab 6) + soal 14 + Docker/AWS/CI (bab 9) |
+| 8–9 | Node + Express (bab 4–5): soal 11–13, tes jalur uang (bab 8) |
+| 10–11 | Mongo (bab 6) + soal 14 + Redis/Docker/CI (bab 9) |
 | 12–13 | Studi kasus + Stripe (bab 10), pakem (bab 11), bicara 3–5 menit per kasus |
-| 14 | Mock JD Bookipi-style, 5 cerita STAR ownership/RCA/transaksi |
+| 14 | Mock interview, 5 cerita STAR, pertanyaan balik |
 
 ## Tips menjawab
 
@@ -48,10 +46,10 @@ Tidak ada yang mengharapkan kamu tahu segalanya. Jika tidak tahu: jujur, lalu na
 
 ## Sudut pandang senior
 
-Contekan ini untuk merapikan lidah, bukan untuk mengganti pemahaman. Kalau hanya menghafal tabel, pertanyaan lanjutan "mengapa" akan menggugurkan.
+Contekan merapikan lidah, bukan mengganti pemahaman. Pertanyaan lanjutan "mengapa" akan menggugurkan hafalan tabel.
 
 ## Kesalahan umum
 
 - Mengarang jawaban framework yang tidak pernah dipakai.
 - Tidak punya pertanyaan balik.
-- Tidak tidur karena cram bab 10 di jam 3 pagi — lebih baik 5 cerita STAR yang bersih.
+- Tidak tidur karena cram bab 10 jam 3 pagi — lebih baik 5 cerita STAR yang bersih.

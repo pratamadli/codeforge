@@ -37,7 +37,7 @@ Struktur layered yang rapi: `routes` → `controllers` → `services` (logika bi
 
 Autentikasi = siapa kamu. Otorisasi = apa yang boleh. Keduanya dicek **di server**.
 
-REST: resource kata benda jamak. Status code tepat (401 vs 403 vs 404 vs 409 vs 429). Pagination (cursor lebih stabil daripada offset). Versioning. Idempotency-Key untuk POST pembayaran. Format error konsisten `{ code, message, details }`. Ownership kontrak (total di server, state machine, versi) di pelajaran **Desain API & ownership fitur**.
+REST: resource kata benda jamak (`GET/POST /orders`, `GET/PATCH/DELETE /orders/:id`). Status code tepat (200, 201, 204, 400, 401, 403, 404, 409, 422, 429, 500). Pagination (cursor lebih stabil daripada offset). Versioning `/v1`. Idempotency-Key untuk POST pembayaran. Format error konsisten `{ code, message, details }`. Ownership kontrak (total di server, state machine, versi) di pelajaran **Desain API & ownership fitur**.
 
 `PUT` mengganti seluruh resource. `PATCH` mengubah sebagian.
 
