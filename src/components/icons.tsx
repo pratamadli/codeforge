@@ -32,6 +32,15 @@ export function IconChart({ className }: { className?: string }) {
   );
 }
 
+export function IconReview({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <rect x="5" y="4" width="14" height="16" rx="2" />
+      <path d="M8 9h8M8 13h6" />
+    </svg>
+  );
+}
+
 export function IconSearch({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
@@ -80,6 +89,7 @@ const MAP = {
   path: IconPath,
   code: IconCode,
   chart: IconChart,
+  review: IconReview,
 };
 
 export function NavIcon({

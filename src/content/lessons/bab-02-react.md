@@ -71,7 +71,23 @@ Ukur dulu dengan Profiler. Lalu: code splitting (`React.lazy` + `Suspense`), vir
 
 Pola baik: controlled vs uncontrolled, custom hook, composition over inheritance, Error Boundary, lifting state up, a11y (button bukan `div onClick`).
 
-React 19: `use()`, Actions, `useOptimistic`, Compiler (memo otomatis). StrictMode di dev menjalankan effect dua kali — itu normal.
+### 2.8 Concurrent & React 19
+
+- **Suspense** — fallback selagi menunggu data/kode (lazy). Dasar streaming Next.js.
+- **`useTransition`** — update tidak mendesak; input tetap responsif, daftar filter berat menyusul.
+- **`useDeferredValue`** — versi nilai yang "tertinggal" agar render berat tidak menghambat ketikan.
+- **React 19** — `use()` baca Promise/Context saat render; Actions (`useActionState`, `useFormStatus`); `useOptimistic`; `ref` sebagai prop biasa.
+- **Compiler** — memo otomatis saat build; tetap perlu paham konsepnya.
+- **StrictMode (dev)** — effect dua kali untuk memunculkan bug cleanup. Normal, bukan bug React.
+- **Portal** — render di luar hirarki DOM induk (modal, tooltip) tanpa kehilangan context.
+
+```js
+const [optimisticLikes, addLike] = useOptimistic(likes, (cur, n) => cur + n);
+async function onLike() {
+  addLike(1);
+  await likeOnServer(postId); // jika error, nilai kembali
+}
+```
 
 ## Tips menjawab
 

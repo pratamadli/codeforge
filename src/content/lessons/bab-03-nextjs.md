@@ -56,6 +56,28 @@ Next 15: fetch tidak lagi di-cache default. Next 16: Cache Components (`'use cac
 
 Hindari waterfall: `Promise.all` untuk fetch yang tidak saling bergantung.
 
+```tsx
+// Lambat: berurutan
+const user = await getUser(id);
+const orders = await getOrders(id);
+// Cepat: paralel
+const [user, orders] = await Promise.all([getUser(id), getOrders(id)]);
+```
+
+```ts
+"use server";
+import { revalidatePath } from "next/cache";
+export async function createOrder(formData: FormData) {
+  const session = await getSession();
+  if (!session) throw new Error("Unauthorized");
+  const input = orderSchema.parse(Object.fromEntries(formData));
+  await db.order.create({ ...input, userId: session.userId });
+  revalidatePath("/orders");
+}
+```
+
+Hal lain yang bisa ditanya: parallel & intercepting routes (modal punya URL sendiri); Edge vs Node runtime (Edge cepat, API terbatas); hanya `NEXT_PUBLIC_*` masuk bundle browser; analisis bundle, jangan impor library besar di Client Component.
+
 ## Tips menjawab
 
 Klasik: "SSR vs SSG vs ISR?", "Apa hydration?", "Server vs Client Component?", "SEO di Next?", "Optimasi LCP?"

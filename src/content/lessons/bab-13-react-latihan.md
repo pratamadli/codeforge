@@ -75,7 +75,43 @@ function useFetch(url) {
 
 ### Pembahasan
 
-Pakai `IntersectionObserver` pada sentinel di bawah list, bukan listener `scroll`. Cleanup observer. Flag `cancelled` / abort untuk request halaman. Untuk list sangat panjang, tambah virtualisasi.
+```js
+function Feed() {
+  const [items, setItems] = useState([]);
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const [done, setDone] = useState(false);
+  const sentinel = useRef(null);
+  useEffect(() => {
+    let cancelled = false;
+    setLoading(true);
+    fetch(`/api/items?page=${page}`).then((r) => r.json()).then((res) => {
+      if (cancelled) return;
+      setItems((prev) => [...prev, ...res.items]);
+      setDone(res.items.length === 0);
+      setLoading(false);
+    });
+    return () => { cancelled = true; };
+  }, [page]);
+  useEffect(() => {
+    const el = sentinel.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting && !loading && !done) setPage((p) => p + 1);
+    });
+    io.observe(el);
+    return () => io.disconnect();
+  }, [loading, done]);
+  return (
+    <>
+      {items.map((i) => <div key={i.id}>{i.name}</div>)}
+      <div ref={sentinel} />
+    </>
+  );
+}
+```
+
+`IntersectionObserver` lebih efisien daripada event `scroll`. Cleanup observer. Flag `cancelled` agar response halaman lama tidak menimpa. Untuk list sangat panjang, tambah virtualisasi.
 
 ## Tips menjawab
 

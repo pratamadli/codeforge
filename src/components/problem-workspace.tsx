@@ -79,6 +79,12 @@ export function ProblemWorkspace(props: Props) {
           {props.language === "ts" ? "TypeScript" : "JavaScript"} · {props.functionName}
         </p>
         <h1 className="mb-4 text-2xl font-semibold tracking-tight">{props.title}</h1>
+        <ol className="mb-4 list-decimal space-y-1 rounded-lg border border-l-4 border-steel-border border-l-[var(--tip-blue)] bg-steel/60 px-5 py-3 text-sm text-muted">
+          <li>Tulis sendiri dulu (10–20 menit). Jangan buka pembahasan.</li>
+          <li>Jalankan contoh. Baru kumpulkan — solusi muncul setelah itu.</li>
+          <li>Bandingkan pembahasan. Besok, tulis ulang dari nol tanpa melihat.</li>
+          <li>Jelaskan lantang: mengapa benar, kasus tepi, kompleksitas.</li>
+        </ol>
         <Markdown content={props.prompt} />
         <div className="mt-6 rounded-lg border border-steel-border bg-steel/60 p-3 text-sm">
           <p className="mb-2 font-medium text-ember-soft">Contoh tes (tombol Jalankan)</p>
@@ -94,11 +100,12 @@ export function ProblemWorkspace(props: Props) {
           <div className="mt-8 rounded-xl border border-ember/30 bg-steel-raised p-4">
             <h2 className="mb-3 text-lg font-semibold text-ember-soft">Pembahasan</h2>
             <Markdown content={pembahasan} />
+            <p className="mt-4 text-sm text-muted">Besok tulis ulang dari nol tanpa lihat.</p>
           </div>
         ) : (
           <p className="mt-8 text-sm text-muted">
-            Pembahasan terbuka setelah kamu menekan <strong className="text-foreground">Kumpulkan</strong>{" "}
-            pertama kali — lulus atau pun belum.
+            Metode bab 13: tulis sendiri → jalankan → kumpulkan. Pembahasan tersembunyi sampai{" "}
+            <strong className="text-foreground">Kumpulkan</strong> — lulus atau pun belum.
           </p>
         )}
       </section>
@@ -131,7 +138,18 @@ export function ProblemWorkspace(props: Props) {
             >
               {pending === "submit" ? "Menguji…" : "Kumpulkan"}
             </button>
+            <button
+              type="button"
+              onClick={() => updateCode(props.starterCode)}
+              disabled={pending !== null}
+              className="rounded-md border border-steel-border px-4 py-2 text-sm hover:border-ember disabled:opacity-60"
+            >
+              Ulang dari nol
+            </button>
           </div>
+          <p className="mb-3 text-xs text-muted">
+            Besok kerjakan lagi dari editor kosong. Ulangan adalah kunci agar ingatan kembali.
+          </p>
           {error && <p className="text-sm text-bad">{error}</p>}
           {outcome && <ResultPanel outcome={outcome} />}
         </div>

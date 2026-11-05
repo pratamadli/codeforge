@@ -171,3 +171,33 @@ body {
   padding-left: 0.85rem;
   color: var(--muted);
 }
+
+:root {
+  --tip-blue: #2b6cb0;
+  --tip-yellow: #b7791f;
+  --tip-red: #c43c2c;
+}
+
+.dark {
+  --tip-blue: #63b3ed;
+  --tip-yellow: #f6c343;
+  --tip-red: #ff6b5a;
+}
+
+.md h2.tip-blue {
+  color: var(--tip-blue);
+  border-left: 4px solid var(--tip-blue);
+  padding-left: 0.7rem;
+}
+
+.md h2.tip-yellow {
+  color: var(--tip-yellow);
+  border-left: 4px solid var(--tip-yellow);
+  padding-left: 0.7rem;
+}
+
+.md h2.tip-red {
+  color: var(--tip-red);
+  border-left: 4px solid var(--tip-red);
+  padding-left: 0.7rem;
+}

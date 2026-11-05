@@ -1,7 +1,7 @@
 export type NavItem = {
   href: string;
   label: string;
-  icon: "home" | "path" | "code" | "chart";
+  icon: "home" | "path" | "code" | "chart" | "review";
 };
 
 export type NavGroup = {
@@ -16,6 +16,7 @@ export const APP_NAV: NavGroup[] = [
       { href: "/dashboard", label: "Dasbor", icon: "home" },
       { href: "/kurikulum", label: "Kurikulum", icon: "path" },
       { href: "/latihan", label: "Latihan", icon: "code" },
+      { href: "/review", label: "Review", icon: "review" },
       { href: "/progress", label: "Progress", icon: "chart" },
     ],
   },
@@ -25,6 +26,7 @@ export const PAGE_TITLE: Record<string, string> = {
   "/dashboard": "Dasbor",
   "/kurikulum": "Kurikulum",
   "/latihan": "Latihan",
+  "/review": "Review",
   "/progress": "Progress",
 };
 
@@ -33,5 +35,6 @@ export function titleForPath(pathname: string): string {
   if (pathname.startsWith("/kurikulum/")) return "Kurikulum";
   if (pathname.startsWith("/pelajaran/")) return "Materi";
   if (pathname.startsWith("/soal/")) return "Soal";
+  if (pathname.startsWith("/review") || pathname.startsWith("/contekan")) return "Review";
   return "Codexercise";
 }
