@@ -30,7 +30,7 @@ Situation, Task, Action (**saya**, bukan "kami"), Result terukur. Siapkan 5 ceri
 
 Pahami soal, ulangi dengan kata sendiri, tanya kasus tepi. Ucapkan proses berpikir. Mulai dari solusi yang berjalan, lalu perbaiki. Nama jelas, fungsi kecil, uji contoh sendiri.
 
-Live coding di track ini bukan todo junior. Latihan React: search debounce + abort, form uang dengan validasi server. Node: API idempoten, rate limiter, upload. Untuk JD MERN senior, siapkan juga cerita produksi — lihat pelajaran **Interview Senior Full Stack (MERN)** di modul ini.
+Latihan React: search debounce + abort, form uang dengan validasi server. Node: API idempoten, rate limiter, upload. Siapkan juga cerita produksi — lihat pelajaran **Latihan bicara interview MERN** di modul ini.
 
 ### Yang membedakan senior
 

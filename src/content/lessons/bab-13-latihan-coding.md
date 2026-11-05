@@ -11,7 +11,7 @@ Di aplikasi: pembahasan soal 1–7 **tersembunyi sampai Kumpulkan**. Tombol **Ul
 
 Soal **1–7** (JavaScript murni: debounce, memoize, pool, flatten, groupBy, LRU, Two Sum) dijalankan judge: satu fungsi/kelas, tes contoh, tes tersembunyi.
 
-Soal **5 (tebak output)** tidak perlu editor — jawab di kepala, lalu buka pembahasan di bawah setelah mencoba. Termasuk contoh event loop baru dari bab 1.4.
+Soal **5 (tebak output)** tidak perlu editor — jawab di kepala, lalu buka pembahasan di bawah setelah mencoba. Termasuk contoh event loop dari bab 1.4.
 
 Soal React, Express, dan Mongo **tidak** punya sandbox. Judge hanya menjalankan fungsi JS/TS. Kerjakan di kertas/IDE sendiri, lalu baca materi di pelajaran berikutnya.
 
@@ -31,7 +31,7 @@ a(); console.log("c");
 // (c)
 console.log(typeof null, [] == false, 0.1 + 0.2 === 0.3);
 
-// (d) — contoh 1.4 di revisi panduan
+// (d) — event loop bab 1.4
 console.log("1");
 setTimeout(() => console.log("2"), 0);
 Promise.resolve().then(() => console.log("3"));

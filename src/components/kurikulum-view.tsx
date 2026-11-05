@@ -20,8 +20,7 @@ export function KurikulumList({ tree }: { tree: TrackTree[] }) {
       <h1 className="text-2xl font-semibold tracking-tight">Kurikulum</h1>
       <p className="mt-1 text-sm text-muted">
         {summary.lessonsDone}/{summary.lessonsTotal} materi · {summary.problemsSolved}/{summary.problemsTotal}{" "}
-        soal lulus. 14 bab revisi panduan (proses/thread dulu) + drill Contekan. Disimpan di
-        localStorage.
+        soal lulus. 14 bab latihan MERN plus review contekan. Disimpan di localStorage.
       </p>
       <ul className="mt-6 space-y-3">
         {summary.tracks.map((track) => {

@@ -18,8 +18,8 @@ export function ProgressView({ tree }: { tree: TrackTree[] }) {
     <main className="mx-auto max-w-3xl px-4 py-8 lg:px-8">
       <h1 className="text-2xl font-semibold tracking-tight">Progress</h1>
       <p className="mt-1 text-sm text-muted">
-        14 bab revisi panduan + 7 soal judge + drill Contekan. Tersimpan di localStorage browser
-        ini. Tidak ada akun — hapus data situs jika ingin mulai ulang.
+        Materi, soal, dan review tersimpan di localStorage browser ini. Tidak ada akun — hapus data
+        situs jika ingin mulai ulang.
       </p>
       <dl className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
         <Stat label="Materi selesai" value={`${summary.lessonsDone}/${summary.lessonsTotal}`} />

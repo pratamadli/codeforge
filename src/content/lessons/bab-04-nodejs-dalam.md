@@ -1,7 +1,5 @@
 # Modul, fs, error, dan stream Node
 
-Lanjutan bab 4: **4.9–4.16**. Ini yang sering jadi pertanyaan follow-up setelah "Node single-thread".
-
 ## 4.9 Sistem modul
 
 | Jenis | Contoh |

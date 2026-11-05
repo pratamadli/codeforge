@@ -1,6 +1,6 @@
 # Desain API & ownership fitur
 
-Di JD senior MERN, "design and develop APIs and backend services" artinya kamu merancang **kontrak** yang produk dan klien lain bisa andalkan — bukan hanya `app.post` yang mengembalikan 200.
+Merancang **kontrak** yang produk dan klien lain bisa andalkan — bukan hanya `app.post` yang mengembalikan 200.
 
 ## Konsep
 

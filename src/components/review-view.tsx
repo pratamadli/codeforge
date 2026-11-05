@@ -53,8 +53,8 @@ export function ReviewView({ tree }: { tree: TrackTree[] }) {
         <p className="text-xs uppercase tracking-wide text-muted">Bab 14.1 · Review</p>
         <h1 className="mt-1 text-2xl font-semibold tracking-tight">Contekan cepat</h1>
         <p className="mt-2 text-sm text-muted">
-          Bukan pilihan ganda. Jawab lantang seperti di interview, lalu bandingkan kalimat dari
-          panduan. Kartu berikutnya mengutamakan yang masih goyang.
+          Bukan pilihan ganda. Jawab lantang seperti di interview, lalu bandingkan jawaban satu
+          kalimat. Kartu berikutnya mengutamakan yang masih goyang.
         </p>
       </div>
 

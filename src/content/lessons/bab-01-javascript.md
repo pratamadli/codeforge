@@ -1,6 +1,6 @@
 # Closure, event loop, dan fondasi lain
 
-Setelah proses/thread (1.1) dan sync/async (1.2): closure, event loop, lalu daftar wajib 1.5. Hampir semua pertanyaan React dan Node bersumber dari sini.
+Hampir semua pertanyaan React dan Node bersumber dari sini.
 
 ## 1.3 Closure
 

@@ -1,8 +1,6 @@
 # Integrasi pembayaran (Stripe-like)
 
-Bookipi adalah fintech invoice/payroll. Integrasi pihak ketiga seperti **Stripe** adalah nice-to-have tertulis, tetapi di interview sering jadi studi kasus wajib: uang, retry, webhook, duplikat.
-
-Judge tidak menjalankan Stripe. Latih di kertas: kamu harus bisa menggambar alur dan menyebut apa yang gagal.
+Uang, retry, webhook, duplikat. Latih di kertas: gambar alurnya dan sebut apa yang gagal.
 
 ## Konsep
 

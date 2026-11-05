@@ -5,14 +5,13 @@ export const curriculum: SeedTrack[] = [
     slug: "interview-fullstack",
     title: "Panduan Interview Fullstack",
     description:
-      "Revisi 49 hlm, spine 14 bab untuk Senior Full Stack (MERN) bergaya Bookipi. Bab 1 mulai proses/thread. Production ownership, desain API, transaksi Mongo, RCA — bukan tutorial junior.",
+      "14 bab latihan interview MERN: JavaScript sampai produksi — API, Mongo, testing, infra, dan soal coding.",
     order: 1,
     modules: [
       {
         slug: "bab-01-javascript",
         title: "Bab 1 · Fondasi JavaScript",
-        description:
-          "Revisi panduan: proses & thread dulu, baru sync/async, closure, dan event loop. Fondasi semua pertanyaan React dan Node.",
+        description: "Proses & thread, sync/async, closure, dan event loop — fondasi pertanyaan React dan Node.",
         order: 1,
         lessons: [
           { slug: "bab-01-proses-thread", title: "Proses dan thread", order: 1 },
@@ -24,7 +23,7 @@ export const curriculum: SeedTrack[] = [
       {
         slug: "bab-02-react",
         title: "Bab 2 · React",
-        description: "Hooks dan re-render sebagai alat; fokusnya ownership fitur produksi di React, bukan tutorial komponen.",
+        description: "Hooks, re-render, state, dan performa di React untuk fitur produksi.",
         order: 2,
         lessons: [{ slug: "bab-02-react", title: "React: konsep inti sampai concurrent", order: 1 }],
         problems: [],
@@ -40,8 +39,7 @@ export const curriculum: SeedTrack[] = [
       {
         slug: "bab-04-nodejs",
         title: "Bab 4 · Node.js",
-        description:
-          "Revisi panduan 4.1–4.16: proses/thread Node, fase event loop, modul/fs/npm, error, stream — plus RCA produksi.",
+        description: "Runtime Node, fase event loop, modul/fs/npm, error, stream, dan troubleshooting produksi.",
         order: 4,
         lessons: [
           { slug: "bab-04-nodejs", title: "Node.js: runtime, core, event loop", order: 1 },
@@ -64,7 +62,7 @@ export const curriculum: SeedTrack[] = [
       {
         slug: "bab-06-mongodb",
         title: "Bab 6 · MongoDB",
-        description: "Performa, konsistensi, transaksi, retry, dan penanganan duplikat — inti JD senior MERN.",
+        description: "Performa, konsistensi, transaksi, retry, dan penanganan duplikat.",
         order: 6,
         lessons: [
           { slug: "bab-06-mongodb", title: "MongoDB: desain data dan performa", order: 1 },
@@ -91,7 +89,7 @@ export const curriculum: SeedTrack[] = [
       {
         slug: "bab-09-infra",
         title: "Bab 9 · Web, Redis, Docker & CI/CD",
-        description: "Docker, AWS, CI/CD, dan rilis tanpa downtime — nice-to-have JD yang sering ditanya.",
+        description: "Docker, AWS, CI/CD, dan rilis tanpa downtime.",
         order: 9,
         lessons: [
           { slug: "bab-09-infra", title: "Dasar web, Redis, Docker, CI/CD", order: 1 },
@@ -122,11 +120,11 @@ export const curriculum: SeedTrack[] = [
       {
         slug: "bab-12-strategi",
         title: "Bab 12 · Strategi menjawab interview",
-        description: "Cara menjawab interview senior MERN: ownership, transaksi, RCA, trade-off — bukan kuis hafalan.",
+        description: "Cara menjawab interview MERN: ownership, transaksi, RCA, dan trade-off.",
         order: 12,
         lessons: [
           { slug: "bab-12-strategi", title: "Strategi menjawab interview", order: 1 },
-          { slug: "bab-12-jd-mern", title: "Interview Senior Full Stack (MERN)", order: 2 },
+          { slug: "bab-12-bicara-mern", title: "Latihan bicara interview MERN", order: 2 },
         ],
         problems: [],
       },

@@ -1,8 +1,6 @@
 # Docker, AWS, CI/CD di produksi
 
-Nice-to-have di JD Bookipi, tetapi interviewer senior hampir selalu menyinggung: "Bagaimana kamu merilis? Kalau salah, bagaimana rollback?"
-
-Bukan tutorial klik konsol. Ini penilaian apakah kamu pernah **mengantar perubahan ke produksi** tanpa drama.
+"Bagaimana kamu merilis? Kalau salah, bagaimana rollback?"
 
 ## Konsep
 

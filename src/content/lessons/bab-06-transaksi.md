@@ -1,8 +1,6 @@
 # Transaksi, konsistensi, retry, duplikat
 
-Ini materi yang **paling dekat** dengan must-have Bookipi: *database and transaction fundamentals — performance, consistency, retries, duplicate handling.*
-
-Baca bab desain data dulu. Di sini kita membahas apa yang terjadi saat dua request, dua webhook, atau retry network mengenai uang.
+Apa yang terjadi saat dua request, dua webhook, atau retry network mengenai uang.
 
 ## Konsep
 

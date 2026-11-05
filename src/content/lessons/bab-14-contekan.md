@@ -26,8 +26,6 @@ Drill 14.1 ada di **Review** di sidebar: pertanyaan saja → jawab lantang 20–
 | Monolith vs microservices? | Mulai modular monolith. Pecah bila ada alasan skala/tim/rilis. |
 | ACID? | Atomic, Consistent, Isolated, Durable. |
 
-Bab 1 revisi menambah proses vs thread sebelum closure. Itu tidak ada baris sendiri di 14.1 — jawabannya tercakup di "Node single-thread?" plus materi 1.1.
-
 ## 14.2 Rencana 2 minggu
 
 | Hari | Fokus |

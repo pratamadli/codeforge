@@ -1,7 +1,5 @@
 # Node.js di luar browser
 
-Bab 4 di revisi panduan jauh lebih dalam (4.1–4.16). Pelajaran ini: **4.1–4.8** — apa itu Node, kapan dipakai, cara memakai banyak core, arsitektur V8+libuv, dan fase event loop. Modul, `fs`, npm, error, dan stream di pelajaran berikutnya.
-
 ## 4.1 Apa itu Node.js?
 
 Node.js adalah runtime JavaScript di luar browser: mesin **V8** (eksekusi JS) + **libuv** (event loop dan I/O asinkron). JavaScript bahasanya; Node tempat menjalankannya.
