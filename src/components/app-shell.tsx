@@ -6,17 +6,13 @@ import { useEffect, useState } from "react";
 import { CommandSearch } from "@/components/command-search";
 import { IconMenu, IconPanel, NavIcon } from "@/components/icons";
 import { ThemeToggle } from "@/components/theme-toggle";
-import type { SearchHit } from "@/lib/catalog";
+import type { SearchHit } from "@/lib/content";
 import { APP_NAV, titleForPath } from "@/lib/nav";
 
-type User = { name: string; email: string };
-
 export function AppShell({
-  user,
   catalog,
   children,
 }: {
-  user: User;
   catalog: SearchHit[];
   children: React.ReactNode;
 }) {
@@ -38,11 +34,6 @@ export function AppShell({
     localStorage.setItem("ce-sidebar", next ? "collapsed" : "expanded");
   }
 
-  async function logout() {
-    await fetch("/api/auth/keluar", { method: "POST" });
-    window.location.assign("/");
-  }
-
   const editor = pathname.startsWith("/soal/");
 
   return (
@@ -62,7 +53,9 @@ export function AppShell({
           collapsed ? "md:w-[4.5rem]" : "md:w-60"
         } ${mobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}`}
       >
-        <div className={`flex h-14 items-center gap-2 border-b border-steel-border px-3 ${collapsed ? "md:justify-center" : ""}`}>
+        <div
+          className={`flex h-14 items-center gap-2 border-b border-steel-border px-3 ${collapsed ? "md:justify-center" : ""}`}
+        >
           <Link href="/dashboard" className="flex items-center gap-2">
             <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-ember text-xs font-bold text-black">
               C
@@ -83,8 +76,7 @@ export function AppShell({
               </p>
               <ul className="space-y-0.5">
                 {group.items.map((item) => {
-                  const active =
-                    pathname === item.href || pathname.startsWith(`${item.href}/`);
+                  const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
                   return (
                     <li key={item.href}>
                       <Link
@@ -139,17 +131,6 @@ export function AppShell({
           </div>
           <CommandSearch catalog={catalog} />
           <ThemeToggle />
-          <div className="hidden text-right text-xs leading-tight md:block">
-            <p className="font-medium text-foreground">{user.name}</p>
-            <p className="text-muted">{user.email}</p>
-          </div>
-          <button
-            type="button"
-            onClick={logout}
-            className="rounded-md border border-steel-border px-3 py-1.5 text-sm text-muted hover:border-ember hover:text-foreground"
-          >
-            Keluar
-          </button>
         </header>
         <main className={editor ? "min-h-0 flex-1 overflow-hidden" : "flex-1 overflow-auto"}>
           {children}

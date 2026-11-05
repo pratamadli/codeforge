@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { CodeEditor } from "@/components/code-editor";
 import { Markdown } from "@/components/markdown";
 import type { PresentedResult } from "@/lib/judge/types";
+import { loadCode, saveCode } from "@/lib/progress";
 
 type Props = {
   slug: string;
@@ -12,9 +13,13 @@ type Props = {
   starterCode: string;
   language: "js" | "ts";
   functionName: string;
-  pembahasan: string | null;
-  hasSubmitted: boolean;
   sampleTests: { args: unknown[]; expected: unknown }[];
+  initialPembahasan?: string;
+  onSubmitted?: (input: {
+    status: "passed" | "failed" | "error";
+    runtimeMs: number;
+    pembahasan?: string;
+  }) => void;
 };
 
 type JudgeResponse = {
@@ -27,21 +32,19 @@ type JudgeResponse = {
 };
 
 export function ProblemWorkspace(props: Props) {
-  const storageKey = `ce-code:${props.slug}`;
   const [code, setCode] = useState(props.starterCode);
   const [pending, setPending] = useState<"run" | "submit" | null>(null);
   const [outcome, setOutcome] = useState<JudgeResponse | null>(null);
-  const [pembahasan, setPembahasan] = useState(props.pembahasan);
+  const [pembahasan, setPembahasan] = useState(props.initialPembahasan ?? null);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    const saved = sessionStorage.getItem(storageKey);
-    if (saved) setCode(saved);
-  }, [storageKey]);
+    setCode(loadCode(props.slug, props.starterCode));
+  }, [props.slug, props.starterCode]);
 
   function updateCode(next: string) {
     setCode(next);
-    sessionStorage.setItem(storageKey, next);
+    saveCode(props.slug, next);
   }
 
   async function call(mode: "run" | "submit") {
@@ -59,7 +62,14 @@ export function ProblemWorkspace(props: Props) {
       return;
     }
     setOutcome(data);
-    if (data.pembahasan) setPembahasan(data.pembahasan);
+    if (mode === "submit") {
+      if (data.pembahasan) setPembahasan(data.pembahasan);
+      props.onSubmitted?.({
+        status: data.status,
+        runtimeMs: data.runtimeMs,
+        pembahasan: data.pembahasan,
+      });
+    }
   }
 
   return (
