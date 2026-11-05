@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { IconSearch } from "@/components/icons";
-import type { SearchHit } from "@/lib/catalog";
+import type { SearchHit } from "@/lib/content";
 
 const KIND: Record<SearchHit["kind"], string> = {
   track: "Track",

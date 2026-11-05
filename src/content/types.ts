@@ -19,7 +19,6 @@ export type SeedProblem = {
   skillLevel: "beginner" | "intermediate" | "advanced";
   functionName: string;
   sampleTests: SeedTest[];
-  hiddenTests: SeedTest[];
   tags: string[];
 };
 
@@ -38,4 +37,11 @@ export type SeedTrack = {
   description: string;
   order: number;
   modules: SeedModule[];
+};
+
+export type BankProblem = SeedProblem & {
+  hiddenTests: SeedTest[];
+  /** Appended after user code; judge calls this instead of functionName. */
+  driverCode?: string;
+  judgeFunctionName?: string;
 };

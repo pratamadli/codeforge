@@ -1,209 +1,309 @@
 import type { SeedTrack } from "@/content/types";
 
-export const DEMO_USER = {
-  email: "demo@codexercise.dev",
-  password: "Latihan123",
-  name: "Demo",
-};
-
 export const curriculum: SeedTrack[] = [
   {
-    slug: "javascript-dasar",
-    title: "JavaScript Dasar",
+    slug: "interview-fullstack",
+    title: "Panduan Interview Fullstack",
     description:
-      "Fondasi bahasa: variabel, fungsi, array, object, dan async. Wajib kuasai sebelum interview.",
+      "Spine 14 bab untuk interview Senior Full Stack (MERN) bergaya Bookipi: production ownership, desain API, transaksi Mongo, RCA, dan trade-off arsitektur — bukan track tutorial junior.",
     order: 1,
     modules: [
       {
-        slug: "fondasi",
-        title: "Fondasi",
-        description: "Cara menyimpan nilai dan menulis fungsi.",
+        slug: "bab-01-javascript",
+        title: "Bab 1 · Fondasi JavaScript",
+        description: "Closure, event loop, tipe, Promise, immutability — sumber hampir semua pertanyaan React dan Node.",
         order: 1,
-        lessons: [
-          { slug: "js-variabel", title: "Variabel: const dan let", order: 1 },
-          { slug: "js-fungsi", title: "Fungsi", order: 2 },
-        ],
-        problems: [
-          {
-            slug: "jumlah-dua-angka",
-            title: "Jumlah dua angka",
-            order: 3,
-            language: "js",
-            difficulty: "easy",
-            skillLevel: "beginner",
-            functionName: "jumlahDuaAngka",
-            tags: ["math", "function"],
-            starterCode: `function jumlahDuaAngka(a, b) {
-  // kembalikan hasil a + b
-}
-`,
-            sampleTests: [
-              { args: [2, 3], expected: 5 },
-              { args: [-1, 1], expected: 0 },
-            ],
-            hiddenTests: [
-              { args: [100, 250], expected: 350 },
-              { args: [0, 0], expected: 0 },
-              { args: [-10, -5], expected: -15 },
-            ],
-          },
-        ],
-      },
-      {
-        slug: "data",
-        title: "Data",
-        description: "Array dan object — struktur yang paling sering muncul di soal.",
-        order: 2,
-        lessons: [{ slug: "js-array-object", title: "Array dan object", order: 1 }],
-        problems: [
-          {
-            slug: "nama-dewasa",
-            title: "Nama yang sudah dewasa",
-            order: 2,
-            language: "js",
-            difficulty: "easy",
-            skillLevel: "beginner",
-            functionName: "namaDewasa",
-            tags: ["array", "filter", "object"],
-            starterCode: `function namaDewasa(orang) {
-  // orang: [{ nama: string, usia: number }, ...]
-  // kembalikan array nama yang usianya >= 18, urutan tetap
-}
-`,
-            sampleTests: [
-              {
-                args: [
-                  [
-                    { nama: "Ani", usia: 17 },
-                    { nama: "Budi", usia: 18 },
-                  ],
-                ],
-                expected: ["Budi"],
-              },
-              {
-                args: [[{ nama: "Citra", usia: 21 }]],
-                expected: ["Citra"],
-              },
-            ],
-            hiddenTests: [
-              { args: [[]], expected: [] },
-              {
-                args: [
-                  [
-                    { nama: "Dina", usia: 16 },
-                    { nama: "Eko", usia: 15 },
-                  ],
-                ],
-                expected: [],
-              },
-              {
-                args: [
-                  [
-                    { nama: "Farah", usia: 18 },
-                    { nama: "Gilang", usia: 40 },
-                    { nama: "Hana", usia: 17 },
-                  ],
-                ],
-                expected: ["Farah", "Gilang"],
-              },
-            ],
-          },
-        ],
-      },
-      {
-        slug: "async",
-        title: "Async",
-        description: "Promise dan async/await — wajib untuk Node dan fetch.",
-        order: 3,
-        lessons: [{ slug: "js-async", title: "Promise dan async/await", order: 1 }],
+        lessons: [{ slug: "bab-01-javascript", title: "Fondasi JavaScript yang sering ditanya", order: 1 }],
         problems: [],
       },
-    ],
-  },
-  {
-    slug: "typescript-dasar",
-    title: "TypeScript Dasar",
-    description: "Type, interface, dan generic sederhana supaya kode interview lebih rapi.",
-    order: 2,
-    modules: [
       {
-        slug: "tipe",
-        title: "Tipe",
-        description: "Anotasi tipe yang paling sering ditanya.",
-        order: 1,
-        lessons: [
-          { slug: "ts-type-interface", title: "Type dan interface", order: 1 },
-          { slug: "ts-generic", title: "Generic sederhana", order: 2 },
-        ],
-        problems: [
-          {
-            slug: "hitung-diskon",
-            title: "Hitung diskon",
-            order: 3,
-            language: "ts",
-            difficulty: "easy",
-            skillLevel: "beginner",
-            functionName: "hitungDiskon",
-            tags: ["math", "typescript"],
-            starterCode: `function hitungDiskon(harga: number, persen: number): number {
-  // harga setelah diskon. Contoh: 100 dan 10 → 90
-}
-`,
-            sampleTests: [
-              { args: [100, 10], expected: 90 },
-              { args: [200, 0], expected: 200 },
-            ],
-            hiddenTests: [
-              { args: [80, 25], expected: 60 },
-              { args: [99, 50], expected: 49.5 },
-              { args: [50, 100], expected: 0 },
-            ],
-          },
-          {
-            slug: "nilai-unik",
-            title: "Nilai unik terurut",
-            order: 4,
-            language: "ts",
-            difficulty: "easy",
-            skillLevel: "beginner",
-            functionName: "nilaiUnik",
-            tags: ["array", "set", "sort", "typescript"],
-            starterCode: `function nilaiUnik(angka: number[]): number[] {
-  // kembalikan nilai unik, diurutkan dari kecil ke besar
-}
-`,
-            sampleTests: [
-              { args: [[3, 1, 3, 2]], expected: [1, 2, 3] },
-              { args: [[5, 5, 5]], expected: [5] },
-            ],
-            hiddenTests: [
-              { args: [[]], expected: [] },
-              { args: [[-1, 3, -1, 2, 3]], expected: [-1, 2, 3] },
-              { args: [[10, 0, 10, 0, 4]], expected: [0, 4, 10] },
-            ],
-          },
-        ],
+        slug: "bab-02-react",
+        title: "Bab 2 · React",
+        description: "Hooks dan re-render sebagai alat; fokusnya ownership fitur produksi di React, bukan tutorial komponen.",
+        order: 2,
+        lessons: [{ slug: "bab-02-react", title: "React: konsep inti sampai concurrent", order: 1 }],
+        problems: [],
       },
-    ],
-  },
-  {
-    slug: "interview-algo",
-    title: "Interview DS/Algo",
-    description:
-      "Pola yang sering muncul di technical test: hashmap, two pointers, sliding window, stack.",
-    order: 3,
-    modules: [
       {
-        slug: "array-hashmap",
-        title: "Array & hashmap",
-        description: "Cari pasangan dan deteksi duplikat tanpa nested loop buta.",
-        order: 1,
-        lessons: [{ slug: "algo-kompleksitas", title: "Kompleksitas waktu (Big O)", order: 1 }],
+        slug: "bab-03-nextjs",
+        title: "Bab 3 · Next.js (App Router)",
+        description: "SSR/SSG/ISR, Server vs Client Component, caching, dan auth di App Router.",
+        order: 3,
+        lessons: [{ slug: "bab-03-nextjs", title: "Next.js App Router", order: 1 }],
+        problems: [],
+      },
+      {
+        slug: "bab-04-nodejs",
+        title: "Bab 4 · Node.js",
+        description: "Runtime produksi: event loop, scaling, error handling, dan RCA saat proses macet.",
+        order: 4,
+        lessons: [
+          { slug: "bab-04-nodejs", title: "Node.js di luar browser", order: 1 },
+          { slug: "bab-04-produksi-rca", title: "Ownership produksi & troubleshooting", order: 2 },
+        ],
+        problems: [],
+      },
+      {
+        slug: "bab-05-express",
+        title: "Bab 5 · Express.js",
+        description: "Desain API dan service backend yang bisa dimiliki end-to-end di produksi.",
+        order: 5,
+        lessons: [
+          { slug: "bab-05-express", title: "Express.js: middleware sampai REST", order: 1 },
+          { slug: "bab-05-api-ownership", title: "Desain API & ownership fitur", order: 2 },
+        ],
+        problems: [],
+      },
+      {
+        slug: "bab-06-mongodb",
+        title: "Bab 6 · MongoDB",
+        description: "Performa, konsistensi, transaksi, retry, dan penanganan duplikat — inti JD senior MERN.",
+        order: 6,
+        lessons: [
+          { slug: "bab-06-mongodb", title: "MongoDB: desain data dan performa", order: 1 },
+          { slug: "bab-06-transaksi", title: "Transaksi, konsistensi, retry, duplikat", order: 2 },
+        ],
+        problems: [],
+      },
+      {
+        slug: "bab-07-typescript",
+        title: "Bab 7 · TypeScript",
+        description: "Tipe, narrowing, generics, utility types, dan mengapa tipe tidak cukup di runtime.",
+        order: 7,
+        lessons: [{ slug: "bab-07-typescript", title: "TypeScript yang ditanya di interview", order: 1 }],
+        problems: [],
+      },
+      {
+        slug: "bab-08-testing",
+        title: "Bab 8 · Testing",
+        description: "Tes yang melindungi jalur uang/auth, plus pencegahan setelah insiden produksi.",
+        order: 8,
+        lessons: [{ slug: "bab-08-testing", title: "Testing: unit sampai E2E", order: 1 }],
+        problems: [],
+      },
+      {
+        slug: "bab-09-infra",
+        title: "Bab 9 · Web, Redis, Docker & CI/CD",
+        description: "Docker, AWS, CI/CD, dan rilis tanpa downtime — nice-to-have JD yang sering ditanya.",
+        order: 9,
+        lessons: [
+          { slug: "bab-09-infra", title: "Dasar web, Redis, Docker, CI/CD", order: 1 },
+          { slug: "bab-09-aws-cicd", title: "Docker, AWS, CI/CD di produksi", order: 2 },
+        ],
+        problems: [],
+      },
+      {
+        slug: "bab-10-studi-kasus",
+        title: "Bab 10 · Studi kasus senior",
+        description: "Trade-off arsitektur: pembayaran Stripe-like, skala, cache, queue — sebut dua opsi.",
+        order: 10,
+        lessons: [
+          { slug: "bab-10-studi-kasus", title: "Cara berpikir senior & architect", order: 1 },
+          { slug: "bab-10-stripe", title: "Integrasi pembayaran (Stripe-like)", order: 2 },
+        ],
+        problems: [],
+      },
+      {
+        slug: "bab-11-pakem",
+        title: "Bab 11 · Pakem software engineering",
+        description: "KISS, SOLID, pakem FE/BE, sistem terdistribusi, dan praktik tim.",
+        order: 11,
+        lessons: [{ slug: "bab-11-pakem", title: "Pakem engineering FE & BE", order: 1 }],
+        problems: [],
+      },
+      {
+        slug: "bab-12-strategi",
+        title: "Bab 12 · Strategi menjawab interview",
+        description: "Cara menjawab interview senior MERN: ownership, transaksi, RCA, trade-off — bukan kuis hafalan.",
+        order: 12,
+        lessons: [
+          { slug: "bab-12-strategi", title: "Strategi menjawab interview", order: 1 },
+          { slug: "bab-12-jd-mern", title: "Interview Senior Full Stack (MERN)", order: 2 },
+        ],
+        problems: [],
+      },
+      {
+        slug: "bab-13-latihan-coding",
+        title: "Bab 13 · Latihan coding",
+        description:
+          "Soal 1–7 di-judge (fungsi JS/TS + tes). Soal React/Express/Mongo tetap materi + pembahasan — bukan sandbox palsu.",
+        order: 13,
+        lessons: [
+          { slug: "bab-13-latihan-coding", title: "Cara latihan + tebak output", order: 1 },
+          { slug: "bab-13-react-latihan", title: "Soal React (materi, bukan sandbox)", order: 9 },
+          { slug: "bab-13-express-latihan", title: "Soal Node & Express (materi)", order: 10 },
+          { slug: "bab-13-mongodb-latihan", title: "Soal MongoDB (materi)", order: 11 },
+        ],
         problems: [
+          {
+            slug: "debounce",
+            title: "Soal 1 · Debounce",
+            order: 2,
+            language: "js",
+            difficulty: "medium",
+            skillLevel: "intermediate",
+            functionName: "debounce",
+            tags: ["closure", "timer", "debounce"],
+            starterCode: `function debounce(fn, delay) {
+  // jalankan fn hanya setelah tidak dipanggil selama delay ms
+}
+`,
+            sampleTests: [
+              {
+                args: [
+                  50,
+                  [
+                    { t: 0, v: "a" },
+                    { t: 20, v: "b" },
+                  ],
+                ],
+                expected: ["b"],
+              },
+              {
+                args: [
+                  40,
+                  [
+                    { t: 0, v: 1 },
+                    { t: 80, v: 2 },
+                  ],
+                ],
+                expected: [1, 2],
+              },
+            ],
+          },
+          {
+            slug: "memoize",
+            title: "Soal 2 · Memoize",
+            order: 3,
+            language: "js",
+            difficulty: "easy",
+            skillLevel: "intermediate",
+            functionName: "memoize",
+            tags: ["closure", "cache", "map"],
+            starterCode: `function memoize(fn) {
+  // kembalikan fungsi yang menyimpan hasil berdasarkan argumen
+}
+`,
+            sampleTests: [
+              { args: [[2, 2, 3]], expected: { values: [4, 4, 9], computes: 2 } },
+              { args: [[5]], expected: { values: [25], computes: 1 } },
+            ],
+          },
+          {
+            slug: "run-pool",
+            title: "Soal 3 · Pool konkurensi",
+            order: 4,
+            language: "js",
+            difficulty: "medium",
+            skillLevel: "intermediate",
+            functionName: "runPool",
+            tags: ["async", "promise", "concurrency"],
+            starterCode: `async function runPool(tasks, limit) {
+  // jalankan maksimal \`limit\` task async bersamaan
+  // hasil tetap berurutan sesuai indeks tasks
+}
+`,
+            sampleTests: [
+              { args: [[1, 2, 3], 2], expected: { results: [1, 2, 3], max: 2 } },
+              { args: [["a"], 3], expected: { results: ["a"], max: 1 } },
+            ],
+          },
+          {
+            slug: "flatten",
+            title: "Soal 4a · Flatten",
+            order: 5,
+            language: "js",
+            difficulty: "easy",
+            skillLevel: "beginner",
+            functionName: "flatten",
+            tags: ["array", "recursion", "reduce"],
+            starterCode: `function flatten(arr) {
+  // ratakan array bersarang berapa pun kedalamannya
+  // flatten([1, [2, [3, 4]], 5]) → [1, 2, 3, 4, 5]
+}
+`,
+            sampleTests: [
+              { args: [[1, [2, [3, 4]], 5]], expected: [1, 2, 3, 4, 5] },
+              { args: [[[], 1, [2]]], expected: [1, 2] },
+            ],
+          },
+          {
+            slug: "group-by",
+            title: "Soal 4b · groupBy",
+            order: 6,
+            language: "js",
+            difficulty: "easy",
+            skillLevel: "beginner",
+            functionName: "groupBy",
+            tags: ["array", "reduce", "object"],
+            starterCode: `function groupBy(arr, keyFn) {
+  // kelompokkan item menurut keyFn(item)
+  // groupBy(orders, o => o.status) → { paid: [...], pending: [...] }
+}
+`,
+            sampleTests: [
+              {
+                args: [
+                  [
+                    { id: 1, status: "paid" },
+                    { id: 2, status: "pending" },
+                    { id: 3, status: "paid" },
+                  ],
+                  "status",
+                ],
+                expected: {
+                  paid: [
+                    { id: 1, status: "paid" },
+                    { id: 3, status: "paid" },
+                  ],
+                  pending: [{ id: 2, status: "pending" }],
+                },
+              },
+              { args: [[], "status"], expected: {} },
+            ],
+          },
+          {
+            slug: "lru-cache",
+            title: "Soal 6 · LRU Cache",
+            order: 7,
+            language: "js",
+            difficulty: "medium",
+            skillLevel: "intermediate",
+            functionName: "LRUCache",
+            tags: ["map", "lru", "class"],
+            starterCode: `class LRUCache {
+  constructor(capacity) {
+    // kapasitas tetap; get dan set harus O(1)
+  }
+  get(key) {
+    // kembalikan nilai, atau undefined jika tidak ada
+  }
+  set(key, val) {
+    // jika penuh, buang item yang paling lama tidak dipakai
+  }
+}
+`,
+            sampleTests: [
+              {
+                args: [
+                  2,
+                  [
+                    ["set", 1, 1],
+                    ["set", 2, 2],
+                    ["get", 1],
+                    ["set", 3, 3],
+                    ["get", 2],
+                    ["get", 3],
+                  ],
+                ],
+                expected: [1, null, 3],
+              },
+            ],
+          },
           {
             slug: "two-sum",
-            title: "Two Sum",
-            order: 2,
+            title: "Soal 7 · Two Sum",
+            order: 8,
             language: "js",
             difficulty: "easy",
             skillLevel: "intermediate",
@@ -211,120 +311,22 @@ export const curriculum: SeedTrack[] = [
             tags: ["hashmap", "array", "two-sum"],
             starterCode: `function twoSum(nums, target) {
   // kembalikan indeks [i, j] (i < j) yang jumlahnya = target
+  // jika tidak ada, kembalikan null
 }
 `,
             sampleTests: [
               { args: [[2, 7, 11, 15], 9], expected: [0, 1] },
               { args: [[3, 2, 4], 6], expected: [1, 2] },
             ],
-            hiddenTests: [
-              { args: [[3, 3], 6], expected: [0, 1] },
-              { args: [[0, 4, 3, 0], 0], expected: [0, 3] },
-              { args: [[-1, -2, -3, -4, -5], -8], expected: [2, 4] },
-            ],
-          },
-          {
-            slug: "contains-duplicate",
-            title: "Contains Duplicate",
-            order: 3,
-            language: "js",
-            difficulty: "easy",
-            skillLevel: "intermediate",
-            functionName: "containsDuplicate",
-            tags: ["hashmap", "set", "array"],
-            starterCode: `function containsDuplicate(nums) {
-  // true jika ada angka yang muncul lebih dari sekali
-}
-`,
-            sampleTests: [
-              { args: [[1, 2, 3, 1]], expected: true },
-              { args: [[1, 2, 3, 4]], expected: false },
-            ],
-            hiddenTests: [
-              { args: [[]], expected: false },
-              { args: [[1]], expected: false },
-              { args: [[1, 1]], expected: true },
-              { args: [[7, 2, 9, 2, 5]], expected: true },
-            ],
           },
         ],
       },
       {
-        slug: "pointer-stack",
-        title: "Two pointers & stack",
-        description: "Dua ujung array, dan tumpukan untuk kurung.",
-        order: 2,
-        lessons: [{ slug: "algo-two-pointers", title: "Two pointers", order: 1 }],
-        problems: [
-          {
-            slug: "palindrome-valid",
-            title: "Valid Palindrome",
-            order: 2,
-            language: "js",
-            difficulty: "easy",
-            skillLevel: "intermediate",
-            functionName: "isPalindrome",
-            tags: ["two-pointers", "string"],
-            starterCode: `function isPalindrome(s) {
-  // true jika s palindrome setelah huruf kecil dan hanya alfanumerik
-}
-`,
-            sampleTests: [
-              { args: ["A man, a plan, a canal: Panama"], expected: true },
-              { args: ["race a car"], expected: false },
-            ],
-            hiddenTests: [
-              { args: [" "], expected: true },
-              { args: ["0P"], expected: false },
-              { args: ["ab_a"], expected: true },
-              { args: ["No lemon, no melon"], expected: true },
-            ],
-          },
-          {
-            slug: "kurung-valid",
-            title: "Valid Parentheses",
-            order: 3,
-            language: "ts",
-            difficulty: "easy",
-            skillLevel: "intermediate",
-            functionName: "isValidParentheses",
-            tags: ["stack", "string", "typescript"],
-            starterCode: `function isValidParentheses(s: string): boolean {
-  // true jika kurung (), {}, [] seimbang
-}
-`,
-            sampleTests: [
-              { args: ["()"], expected: true },
-              { args: ["()[]{}"], expected: true },
-              { args: ["(]"], expected: false },
-            ],
-            hiddenTests: [
-              { args: ["([)]"], expected: false },
-              { args: ["{[]}"], expected: true },
-              { args: [""], expected: true },
-              { args: ["((((("], expected: false },
-              { args: ["]"], expected: false },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-  {
-    slug: "arsitektur",
-    title: "Arsitektur",
-    description: "Materi baca: layering, API design, caching, scaling — sering muncul di interview sistem.",
-    order: 4,
-    modules: [
-      {
-        slug: "dasar-arsitektur",
-        title: "Dasar arsitektur",
-        description: "Cara menjelaskan desain ke interviewer, bukan cuma menggambar kotak.",
-        order: 1,
-        lessons: [
-          { slug: "ars-layering", title: "Layering: controller, service, repository", order: 1 },
-          { slug: "ars-api-scaling", title: "API design, caching, dan scaling", order: 2 },
-        ],
+        slug: "bab-14-contekan",
+        title: "Bab 14 · Contekan cepat",
+        description: "Jawaban satu kalimat dan rencana belajar 2 minggu. Baca sebelum interview.",
+        order: 14,
+        lessons: [{ slug: "bab-14-contekan", title: "Contekan cepat sebelum interview", order: 1 }],
         problems: [],
       },
     ],

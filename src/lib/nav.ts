@@ -16,11 +16,8 @@ export const APP_NAV: NavGroup[] = [
       { href: "/dashboard", label: "Dasbor", icon: "home" },
       { href: "/kurikulum", label: "Kurikulum", icon: "path" },
       { href: "/latihan", label: "Latihan", icon: "code" },
+      { href: "/progress", label: "Progress", icon: "chart" },
     ],
-  },
-  {
-    label: "Akun",
-    items: [{ href: "/progress", label: "Progress", icon: "chart" }],
   },
 ];
 
