@@ -1,6 +1,6 @@
 # Codexercise
 
-Latihan interview **Senior Full Stack (MERN)** — spine 14 bab *Panduan Interview Fullstack*, ditimbang untuk lowongan seperti Bookipi: production ownership, desain API, transaksi Mongo (konsistensi, retry, duplikat), RCA, Docker/AWS/CI/CD, integrasi Stripe-like. Materi Indonesia, soal JS/TS di-judge, progress di **localStorage**. Tidak ada daftar/masuk. Bukan track tutorial junior.
+Latihan MERN dan interview fullstack. 14 bab materi (Indonesia), soal JS/TS di-judge, progress di **localStorage**. Tidak ada daftar/masuk.
 
 ## Stack
 

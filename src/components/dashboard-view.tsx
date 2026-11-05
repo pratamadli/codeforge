@@ -31,10 +31,9 @@ export function DashboardView({ tree }: { tree: TrackTree[] }) {
     <div className="mx-auto max-w-6xl space-y-8 px-4 py-8 lg:px-8">
       <section className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-semibold tracking-tight">Senior Full Stack (MERN)</h1>
+          <h1 className="text-2xl font-semibold tracking-tight">Latihan interview MERN</h1>
           <p className="mt-1 text-muted">
-            Revisi panduan 49 hlm: Bab 1 mulai dari proses & thread. Target Bookipi — ownership,
-            transaksi, RCA. Progress di browser ini, tanpa akun.
+            Materi 14 bab plus soal JS/TS. Progress tersimpan di browser ini — tanpa akun.
           </p>
         </div>
         <Link
@@ -82,7 +81,6 @@ export function DashboardView({ tree }: { tree: TrackTree[] }) {
 
         <div className="rounded-xl border border-steel-border bg-steel p-5 lg:col-span-2">
           <h2 className="text-sm font-medium">Fokus hari ini</h2>
-          <p className="mt-1 text-xs text-muted">Mengikuti rencana 2 minggu (bab 14.2) jika belum ada item terakhir.</p>
           {data.focus.length === 0 ? (
             <p className="mt-3 text-sm text-muted">Tidak ada item terbuka. Cek kurikulum.</p>
           ) : (

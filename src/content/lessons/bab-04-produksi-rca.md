@@ -1,9 +1,5 @@
 # Ownership produksi & troubleshooting
 
-Lowongan Senior Full Stack (MERN) seperti Bookipi menilai ini lebih dari hafalan API: **kamu pernah memiliki fitur sampai produksi**, sistem sempat tumbuh, lalu kamu bisa men-debug saat rusak.
-
-Ini bukan bab "cara `console.log`". Ini bab bagaimana seorang senior menemukan akar masalah, memperbaiki, dan memastikan tidak terulang.
-
 ## Konsep
 
 Ownership end-to-end artinya kamu bisa menjawab empat pertanyaan tanpa melempar ke orang lain:
@@ -36,7 +32,7 @@ Bukan "saya tahu Kubernetes". Melainkan: trafik atau kompleksitas domain naik (l
 
 ## Tips menjawab
 
-Pewawancara Bookipi-style akan mendorong: "Ceritakan produksi yang rusak." Pakai STAR: situasi (fintech, uang), tugas (kamu on-call / pemilik fitur), aksi (ukur → rollback/fix → pencegahan), hasil (angka).
+Pewawancara sering mendorong: "Ceritakan produksi yang rusak." Pakai STAR: situasi (uang atau data penting), tugas (kamu on-call / pemilik fitur), aksi (ukur → rollback/fix → pencegahan), hasil (angka).
 
 Kalau belum punya insiden besar: ceritakan near-miss yang kamu cegah — timeout tanpa retry, unique index yang kamu usulkan, webhook yang kamu buat idempoten.
 

@@ -1,7 +1,5 @@
 # Proses dan thread
 
-Revisi panduan: bab 1 **dimulai dari sini**, baru naik ke sync/async, closure, dan event loop. Kalau bagian ini kuat, React dan Node terasa jauh lebih mudah — dan jawabanmu kelihatan senior, bukan hafalan hook.
-
 ## Konsep
 
 **Proses** adalah program yang sedang berjalan, lengkap dengan ruang memori sendiri. **Thread** adalah jalur eksekusi di dalam proses: urutan instruksi yang dikerjakan CPU. Satu thread hanya bisa mengerjakan **satu hal pada satu waktu**.

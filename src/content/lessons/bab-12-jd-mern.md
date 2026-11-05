@@ -1,10 +1,8 @@
-# Menjawab interview Senior Full Stack (MERN)
-
-Bab 12 yang umum tetap berlaku. Tambahan ini merapikan lidah untuk JD seperti Bookipi: fintech + AI, invoice/payroll, remote, jam Sydney.
+# Latihan bicara interview MERN
 
 ## Konsep — apa yang mereka uji
 
-| Klausa JD | Yang mereka ingin dengar |
+| Yang sering ditanya | Yang mereka ingin dengar |
 | --- | --- |
 | Production feature ownership | Kamu membawa fitur dari spek → API → UI → rilis → monitor |
 | Scaling production / growing complexity | Bukan buzzword; angka (p95, jumlah invoice, worker backlog) + pilihan yang kamu buat |
@@ -30,7 +28,7 @@ Latihan keras: 3 menit per cerita, tanpa slide. Kalau tidak punya domain fintech
 - Apa insiden uang terakhir dan apa yang berubah setelahnya?
 - Atlas / Postgres / mix — mengapa? Transaksi di mana ditegakkan?
 - Stripe (atau setara) — webhook di-handle siapa, rekonsiliasi seberapa sering?
-- Jam Sydney: overlap, handoff, dokumentasi keputusan (ADR)?
+- Tim remote: overlap jam, handoff, dokumentasi keputusan (ADR)?
 
 ## Tips menjawab
 

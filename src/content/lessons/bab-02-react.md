@@ -97,9 +97,9 @@ Klasik: "Beda state dan props?", "Kenapa key penting?", "Kapan `useMemo`?", "Ceg
 
 Contoh `useMemo`: *"Saya pakai saat hitungannya terbukti mahal atau butuh referensi object yang stabil. Saya tidak memakainya di mana-mana karena memo punya biaya. Saya ukur dulu."*
 
-## Ownership fitur, bukan tutorial hook
+## Ownership fitur
 
-Di JD senior, React adalah setengah dari "build features across frontend and backend". Yang ditanya: bagaimana kamu merancang layar invoice supaya status `pending_payment` jujur, request tidak race, dan error dari API (`OUT_OF_STOCK`) tampil sebagai keputusan bisnis — bukan spinner. Hook hanyalah alat.
+Bagaimana kamu merancang layar invoice supaya status `pending_payment` jujur, request tidak race, dan error dari API (`OUT_OF_STOCK`) tampil sebagai keputusan bisnis — bukan spinner. Hook hanyalah alat.
 
 ## Sudut pandang senior
 

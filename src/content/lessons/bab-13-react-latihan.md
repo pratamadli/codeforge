@@ -2,7 +2,7 @@
 
 Judge v1 hanya menjalankan **satu fungsi JS/TS** plus tes. Komponen React, hook, dan `fetch` ke API tidak bisa di-sandbox di sini. Kerjakan di IDE/React sendiri, lalu pelajari pembahasan di bawah.
 
-Ini soal 8–10 dari panduan: `useDebounce` + search tanpa race, `useFetch`, infinite scroll.
+Soal 8–10: `useDebounce` + search tanpa race, `useFetch`, infinite scroll.
 
 ## Soal 8 · useDebounce + pencarian tanpa race
 

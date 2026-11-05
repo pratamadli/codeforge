@@ -1,6 +1,6 @@
 # Studi kasus: drill verbal
 
-Di level senior kamu dinilai dari kemampuan **memilih dan membenarkan**. Ini bab 10 dari panduan — bukan kuis pilihan ganda. Kerangka tiap kasus:
+Di level senior kamu dinilai dari kemampuan **memilih dan membenarkan**. Kerangka tiap kasus:
 
 1. Klarifikasi: siapa pengguna, berapa trafik, apa yang tidak boleh gagal?
 2. Sederhana dulu.

@@ -1,6 +1,6 @@
 # Synchronous vs asynchronous
 
-Setelah proses/thread: mengapa JavaScript *harus* async, dan apa artinya `await` (bukan thread baru).
+Mengapa JavaScript *harus* async, dan apa artinya `await` (bukan thread baru).
 
 ## Konsep
 

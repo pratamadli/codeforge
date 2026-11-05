@@ -15,9 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Codexercise — Senior Full Stack (MERN)",
-  description:
-    "14 bab revisi Panduan Interview Fullstack (proses/thread dulu), ditimbang senior MERN: produksi, transaksi Mongo, API, RCA. Tanpa daftar akun.",
+  title: "Codexercise — Latihan interview MERN",
+  description: "Latihan MERN dan interview fullstack: 14 bab materi, soal JS/TS, progress di browser. Tanpa daftar akun.",
 };
 
 const themeScript = `try{var t=localStorage.getItem("ce-theme");if(t==="light")document.documentElement.classList.remove("dark");else document.documentElement.classList.add("dark")}catch(e){}`;
