@@ -124,7 +124,7 @@ export const curriculum: SeedTrack[] = [
         order: 12,
         lessons: [
           { slug: "bab-12-strategi", title: "Strategi menjawab interview", order: 1 },
-          { slug: "bab-12-jd-mern", title: "Latihan bicara interview MERN", order: 2 },
+          { slug: "bab-12-bicara-mern", title: "Latihan bicara interview MERN", order: 2 },
         ],
         problems: [],
       },
