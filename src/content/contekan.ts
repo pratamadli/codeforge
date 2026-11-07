@@ -133,8 +133,8 @@ export const RENCANA_2_MINGGU: { hari: string; title: string; fokus: string; hre
   {
     hari: "1–2",
     title: "JavaScript inti + soal 1–7",
-    fokus: "JavaScript inti (bab 1, mulai proses/thread) + soal 1–7 di bab 13 tanpa AI.",
-    href: "/pelajaran/bab-01-proses-thread",
+    fokus: "JavaScript inti (bab 1, mulai peta istilah) + soal 1–7 di bab 13 tanpa AI.",
+    href: "/pelajaran/bab-01-peta-istilah",
   },
   {
     hari: "3–5",
