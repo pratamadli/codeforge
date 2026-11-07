@@ -6,7 +6,7 @@ export type ContekanCard = {
   babLabel: string;
 };
 
-/** Bab 14.1 — pertanyaan cepat dan jawaban satu kalimat. Bukan bank kuis. */
+/** Bab 16.1 — pertanyaan cepat dan jawaban satu kalimat. Bukan bank kuis. */
 export const CONTEKAN_CARDS: ContekanCard[] = [
   {
     id: "state-props",
@@ -93,6 +93,13 @@ export const CONTEKAN_CARDS: ContekanCard[] = [
     babLabel: "Bab 6 · MongoDB",
   },
   {
+    id: "offset-cursor",
+    q: "Offset vs cursor pagination?",
+    a: "Offset memindai dan membuang N baris sehingga lambat di halaman dalam. Cursor memakai penanda item terakhir (WHERE id < x) lewat index sehingga cepat dan stabil, tetapi tidak bisa lompat halaman.",
+    babHref: "/pelajaran/bab-08-optimasi",
+    babLabel: "Bab 8 · Optimasi",
+  },
+  {
     id: "mongo-cepat",
     q: "Cara mempercepat query Mongo?",
     a: "Index yang sesuai (urutan ESR), explain, projection, hindari N+1 dan skip besar.",
@@ -118,14 +125,14 @@ export const CONTEKAN_CARDS: ContekanCard[] = [
     q: "Monolith vs microservices?",
     a: "Mulai modular monolith. Pecah bila ada alasan skala, tim, atau rilis.",
     babHref: "/pelajaran/bab-10-studi-kasus",
-    babLabel: "Bab 10 · Studi kasus",
+    babLabel: "Bab 12 · Studi kasus",
   },
   {
     id: "acid",
     q: "ACID?",
     a: "Atomic, Consistent, Isolated, Durable.",
     babHref: "/pelajaran/bab-11-pakem",
-    babLabel: "Bab 11 · Pakem",
+    babLabel: "Bab 13 · Pakem",
   },
 ];
 
@@ -133,13 +140,13 @@ export const RENCANA_2_MINGGU: { hari: string; title: string; fokus: string; hre
   {
     hari: "1–2",
     title: "JavaScript inti + soal 1–7",
-    fokus: "JavaScript inti (bab 1, mulai peta istilah) + soal 1–7 di bab 13 tanpa AI.",
+    fokus: "JavaScript inti (bab 1, mulai peta istilah) + soal 1–7 di bab 15 tanpa AI.",
     href: "/pelajaran/bab-01-peta-istilah",
   },
   {
     hari: "3–5",
     title: "React, soal 8–10, TypeScript",
-    fokus: "React (bab 2): hooks, re-render, useEffect cleanup. Kerjakan soal 8–10. Lalu TypeScript (bab 7).",
+    fokus: "React (bab 2): hooks, re-render, useEffect cleanup. Kerjakan soal 8–10. Lalu TypeScript (bab 9).",
     href: "/pelajaran/bab-02-react",
   },
   {
@@ -150,20 +157,26 @@ export const RENCANA_2_MINGGU: { hari: string; title: string; fokus: string; hre
   },
   {
     hari: "8–9",
-    title: "Node, Express, tes jalur uang",
-    fokus: "Node dan Express (bab 4–5) + soal 11–13. CRUD API dengan JWT, validasi, rate limit, dan tes jalur uang (bab 8).",
+    title: "Node, Express, tes API",
+    fokus: "Node dan Express (bab 4–5) + soal 11–13. CRUD API dengan JWT, validasi, rate limit, dan beberapa tes (bab 10).",
     href: "/pelajaran/bab-04-nodejs",
   },
   {
     hari: "10–11",
-    title: "Mongo, soal 14, Redis/Docker",
-    fokus: "MongoDB dan Mongoose (bab 6) + soal 14. Latih explain. Baca Redis, Docker, CI/CD (bab 9).",
+    title: "Mongo, soal 14, Laravel",
+    fokus: "MongoDB dan Mongoose (bab 6) + soal 14. Latih explain. Baca Laravel (bab 7) jika relevan di stack.",
     href: "/pelajaran/bab-06-mongodb",
   },
   {
-    hari: "12–13",
+    hari: "12",
+    title: "Optimasi + Redis/Docker",
+    fokus: "Optimasi backend (bab 8): cerita gejala → penyebab → perbaikan → angka. Baca Redis, Docker, CI/CD (bab 11).",
+    href: "/pelajaran/bab-08-optimasi",
+  },
+  {
+    hari: "13",
     title: "Studi kasus + pakem",
-    fokus: "Studi kasus arsitektur (bab 10) dan pakem (bab 11). Latihan menjelaskan lantang 3–5 menit per kasus.",
+    fokus: "Studi kasus arsitektur (bab 12) dan pakem (bab 13). Latihan menjelaskan lantang 3–5 menit per kasus.",
     href: "/pelajaran/bab-10-studi-kasus",
   },
   {

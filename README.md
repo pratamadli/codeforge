@@ -1,6 +1,6 @@
 # Codexercise
 
-Latihan MERN dan interview fullstack. 14 bab materi (Indonesia), soal JS/TS di-judge, progress di **localStorage**. Tidak ada daftar/masuk.
+Latihan MERN dan interview fullstack. 16 bab materi (Indonesia), soal JS/TS di-judge, progress di **localStorage**. Tidak ada daftar/masuk.
 
 ## Stack
 
@@ -19,7 +19,7 @@ Kurikulum statis di `src/content`. Hidden tests dan pembahasan hanya dibaca serv
 
 ## Alur
 
-Baca materi → kerjakan soal 1–7 bab 13 di Monaco → **Jalankan contoh** → **Kumpulkan** (tes tersembunyi) → pembahasan. Soal React/Express/Mongo tetap materi + pembahasan (bukan sandbox palsu).
+Baca materi → kerjakan soal 1–7 bab 15 di Monaco → **Jalankan contoh** → **Kumpulkan** (tes tersembunyi) → pembahasan. Soal React/Express/Mongo tetap materi + pembahasan (bukan sandbox palsu).
 
 Progress, pelajaran/soal terakhir, pengumpulan, dan statistik dasbor tersimpan di `localStorage` (`ce-progress-v1`).
 

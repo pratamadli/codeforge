@@ -56,7 +56,7 @@ export function LessonView({
       )}
       {slug === "bab-14-contekan" && (
         <p className="mt-6 text-sm">
-          Drill kartu 14.1 ada di{" "}
+          Drill kartu 16.1 ada di{" "}
           <Link href="/review" className="text-ember hover:underline">
             Review
           </Link>

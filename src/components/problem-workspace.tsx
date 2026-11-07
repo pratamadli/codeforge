@@ -104,7 +104,7 @@ export function ProblemWorkspace(props: Props) {
           </div>
         ) : (
           <p className="mt-8 text-sm text-muted">
-            Metode bab 13: tulis sendiri → jalankan → kumpulkan. Pembahasan tersembunyi sampai{" "}
+            Metode bab 15: tulis sendiri → jalankan → kumpulkan. Pembahasan tersembunyi sampai{" "}
             <strong className="text-foreground">Kumpulkan</strong> — lulus atau pun belum.
           </p>
         )}

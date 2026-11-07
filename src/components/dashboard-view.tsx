@@ -33,7 +33,7 @@ export function DashboardView({ tree }: { tree: TrackTree[] }) {
         <div>
           <h1 className="text-2xl font-semibold tracking-tight">Latihan interview MERN</h1>
           <p className="mt-1 text-muted">
-            Materi 14 bab plus soal JS/TS. Progress tersimpan di browser ini — tanpa akun.
+            Materi 16 bab plus soal JS/TS. Progress tersimpan di browser ini — tanpa akun.
           </p>
         </div>
         <Link
