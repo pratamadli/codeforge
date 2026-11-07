@@ -30,7 +30,7 @@ Drill 14.1 ada di **Review** di sidebar: pertanyaan saja → jawab lantang 20–
 
 | Hari | Fokus |
 | --- | --- |
-| 1–2 | JavaScript (bab 1, mulai proses/thread) + soal 1–7 tanpa AI |
+| 1–2 | JavaScript (bab 1, mulai peta istilah) + soal 1–7 tanpa AI |
 | 3–5 | React (bab 2) soal 8–10, lalu TypeScript (bab 7) |
 | 6–7 | Next.js (bab 3): rendering, Server/Client, caching, auth |
 | 8–9 | Node + Express (bab 4–5): soal 11–13, tes jalur uang (bab 8) |

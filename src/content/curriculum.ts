@@ -11,12 +11,14 @@ export const curriculum: SeedTrack[] = [
       {
         slug: "bab-01-javascript",
         title: "Bab 1 · Fondasi JavaScript",
-        description: "Proses & thread, sync/async, closure, dan event loop — fondasi pertanyaan React dan Node.",
+        description:
+          "Peta istilah dari nol, proses & thread, sync/async, closure, dan event loop — fondasi pertanyaan React dan Node.",
         order: 1,
         lessons: [
-          { slug: "bab-01-proses-thread", title: "Proses dan thread", order: 1 },
-          { slug: "bab-01-sync-async", title: "Synchronous vs asynchronous", order: 2 },
-          { slug: "bab-01-javascript", title: "Closure, event loop, dan fondasi lain", order: 3 },
+          { slug: "bab-01-peta-istilah", title: "Mulai di sini: peta istilah dari nol", order: 1 },
+          { slug: "bab-01-proses-thread", title: "Proses dan thread", order: 2 },
+          { slug: "bab-01-sync-async", title: "Synchronous vs asynchronous", order: 3 },
+          { slug: "bab-01-javascript", title: "Closure, event loop, dan fondasi lain", order: 4 },
         ],
         problems: [],
       },
@@ -39,7 +41,8 @@ export const curriculum: SeedTrack[] = [
       {
         slug: "bab-04-nodejs",
         title: "Bab 4 · Node.js",
-        description: "Runtime Node, fase event loop, modul/fs/npm, error, stream, dan troubleshooting produksi.",
+        description:
+          "Runtime Node dari nol, perjalanan kode, fase event loop, modul/fs/npm, error, stream, dan troubleshooting produksi.",
         order: 4,
         lessons: [
           { slug: "bab-04-nodejs", title: "Node.js: runtime, core, event loop", order: 1 },
