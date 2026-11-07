@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect } from "react";
 import { FlashDrill } from "@/components/flash-drill";
 import { LessonCompleteButton } from "@/components/lesson-complete-button";
+import { LessonPlayer } from "@/components/lesson-player";
 import { Markdown } from "@/components/markdown";
 import { STUDI_KASUS } from "@/content/studi-kasus";
 import { useLocalProgress } from "@/hooks/use-local-progress";
@@ -37,9 +38,11 @@ export function LessonView({
       </Link>
       <p className="mt-3 text-xs uppercase tracking-wide text-muted">{moduleTitle}</p>
       <h1 className="sr-only">{title}</h1>
-      <article className="mt-4">
-        <Markdown content={markdown} />
-      </article>
+      <div className="mt-4">
+        <LessonPlayer slug={slug}>
+          <Markdown content={markdown} />
+        </LessonPlayer>
+      </div>
       {slug === "bab-10-studi-kasus" && (
         <div className="mt-8">
           <FlashDrill
