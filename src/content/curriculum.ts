@@ -5,7 +5,7 @@ export const curriculum: SeedTrack[] = [
     slug: "interview-fullstack",
     title: "Panduan Interview Fullstack",
     description:
-      "14 bab latihan interview MERN: JavaScript sampai produksi — API, Mongo, testing, infra, dan soal coding.",
+      "16 bab latihan interview fullstack: JavaScript sampai produksi — API, Mongo, Laravel, testing, infra, dan soal coding.",
     order: 1,
     modules: [
       {
@@ -74,26 +74,48 @@ export const curriculum: SeedTrack[] = [
         problems: [],
       },
       {
-        slug: "bab-07-typescript",
-        title: "Bab 7 · TypeScript",
-        description: "Tipe, narrowing, generics, utility types, dan mengapa tipe tidak cukup di runtime.",
+        slug: "bab-07-laravel",
+        title: "Bab 7 · Laravel",
+        description: "Request lifecycle, Eloquent, API, queue, transaksi, dan kapan pilih Laravel vs Express.",
         order: 7,
+        lessons: [
+          { slug: "bab-07-laravel", title: "Laravel: request, Eloquent, API, queue", order: 1 },
+          { slug: "bab-07-laravel-lanjut", title: "Transaksi, tes, frontend, Laravel vs Express", order: 2 },
+        ],
+        problems: [],
+      },
+      {
+        slug: "bab-08-optimasi",
+        title: "Bab 8 · Optimasi backend & data",
+        description: "Ukur p95, N+1, index, cursor pagination, cache, queue, dan cara menjawab dengan angka.",
+        order: 8,
+        lessons: [
+          { slug: "bab-08-optimasi", title: "Ukur, N+1, index, pagination", order: 1 },
+          { slug: "bab-08-optimasi-lanjut", title: "Cache, queue, payload, cerita optimasi", order: 2 },
+        ],
+        problems: [],
+      },
+      {
+        slug: "bab-07-typescript",
+        title: "Bab 9 · TypeScript",
+        description: "Tipe, narrowing, generics, utility types, dan mengapa tipe tidak cukup di runtime.",
+        order: 9,
         lessons: [{ slug: "bab-07-typescript", title: "TypeScript yang ditanya di interview", order: 1 }],
         problems: [],
       },
       {
         slug: "bab-08-testing",
-        title: "Bab 8 · Testing",
+        title: "Bab 10 · Testing",
         description: "Tes yang melindungi jalur uang/auth, plus pencegahan setelah insiden produksi.",
-        order: 8,
+        order: 10,
         lessons: [{ slug: "bab-08-testing", title: "Testing: unit sampai E2E", order: 1 }],
         problems: [],
       },
       {
         slug: "bab-09-infra",
-        title: "Bab 9 · Web, Redis, Docker & CI/CD",
+        title: "Bab 11 · Web, Redis, Docker & CI/CD",
         description: "Docker, AWS, CI/CD, dan rilis tanpa downtime.",
-        order: 9,
+        order: 11,
         lessons: [
           { slug: "bab-09-infra", title: "Dasar web, Redis, Docker, CI/CD", order: 1 },
           { slug: "bab-09-aws-cicd", title: "Docker, AWS, CI/CD di produksi", order: 2 },
@@ -102,10 +124,10 @@ export const curriculum: SeedTrack[] = [
       },
       {
         slug: "bab-10-studi-kasus",
-        title: "Bab 10 · Studi kasus senior",
+        title: "Bab 12 · Studi kasus senior",
         description:
           "10 studi kasus sebagai drill verbal: pikirkan lantang, baru buka kerangka senior. Plus Stripe-like.",
-        order: 10,
+        order: 12,
         lessons: [
           { slug: "bab-10-studi-kasus", title: "Studi kasus: drill verbal", order: 1 },
           { slug: "bab-10-stripe", title: "Integrasi pembayaran (Stripe-like)", order: 2 },
@@ -114,17 +136,17 @@ export const curriculum: SeedTrack[] = [
       },
       {
         slug: "bab-11-pakem",
-        title: "Bab 11 · Pakem software engineering",
+        title: "Bab 13 · Pakem software engineering",
         description: "KISS, SOLID, pakem FE/BE, sistem terdistribusi, dan praktik tim.",
-        order: 11,
+        order: 13,
         lessons: [{ slug: "bab-11-pakem", title: "Pakem engineering FE & BE", order: 1 }],
         problems: [],
       },
       {
         slug: "bab-12-strategi",
-        title: "Bab 12 · Strategi menjawab interview",
-        description: "Cara menjawab interview MERN: ownership, transaksi, RCA, dan trade-off.",
-        order: 12,
+        title: "Bab 14 · Strategi menjawab interview",
+        description: "Cara menjawab interview fullstack: ownership, transaksi, RCA, dan trade-off.",
+        order: 14,
         lessons: [
           { slug: "bab-12-strategi", title: "Strategi menjawab interview", order: 1 },
           { slug: "bab-12-bicara-mern", title: "Latihan bicara interview MERN", order: 2 },
@@ -133,10 +155,10 @@ export const curriculum: SeedTrack[] = [
       },
       {
         slug: "bab-13-latihan-coding",
-        title: "Bab 13 · Latihan coding",
+        title: "Bab 15 · Latihan coding",
         description:
           "Soal 1–7 di-judge (fungsi JS/TS + tes). Soal React/Express/Mongo tetap materi + pembahasan — bukan sandbox palsu.",
-        order: 13,
+        order: 15,
         lessons: [
           { slug: "bab-13-latihan-coding", title: "Cara latihan + tebak output", order: 1 },
           { slug: "bab-13-react-latihan", title: "Soal React (materi, bukan sandbox)", order: 9 },
@@ -332,9 +354,9 @@ export const curriculum: SeedTrack[] = [
       },
       {
         slug: "bab-14-contekan",
-        title: "Bab 14 · Contekan cepat",
+        title: "Bab 16 · Contekan cepat",
         description:
-          "Review 14.1: pertanyaan cepat + jawaban satu kalimat (bukan kuis). Plus rencana 2 minggu.",
+          "Review 16.1: pertanyaan cepat + jawaban satu kalimat (bukan kuis). Plus rencana 2 minggu.",
         order: 14,
         lessons: [{ slug: "bab-14-contekan", title: "Contekan cepat sebelum interview", order: 1 }],
         problems: [],

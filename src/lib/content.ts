@@ -194,14 +194,14 @@ export function getSearchCatalog(): SearchHit[] {
     href: "/review",
     title: "Review · Contekan cepat",
     kind: "review",
-    subtitle: "Bab 14.1 · jawab lantang, bukan pilihan ganda",
+    subtitle: "Bab 16.1 · jawab lantang, bukan pilihan ganda",
   });
   for (const card of CONTEKAN_CARDS) {
     hits.push({
       href: "/review",
       title: card.q,
       kind: "review",
-      subtitle: "Review · 14.1",
+      subtitle: "Review · 16.1",
     });
   }
   for (const kasus of STUDI_KASUS) {
@@ -209,7 +209,7 @@ export function getSearchCatalog(): SearchHit[] {
       href: `/pelajaran/bab-10-studi-kasus#${kasus.id}`,
       title: kasus.title,
       kind: "review",
-      subtitle: "Bab 10 · drill verbal",
+      subtitle: "Bab 12 · drill verbal",
     });
   }
   return hits;

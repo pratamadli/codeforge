@@ -26,7 +26,7 @@ export function LatihanView({ tree }: { tree: TrackTree[] }) {
     <main className="mx-auto max-w-4xl px-4 py-8 lg:px-8">
       <h1 className="text-2xl font-semibold tracking-tight">Latihan</h1>
       <p className="mt-1 text-sm text-muted">
-        Soal 1–7 bab 13, judge fungsi JS/TS. Metode: tulis sendiri → jalankan → kumpulkan → ulang
+        Soal 1–7 bab 15, judge fungsi JS/TS. Metode: tulis sendiri → jalankan → kumpulkan → ulang
         dari nol besok. {solved}/{problems.length} lulus. Soal 8–14 di kurikulum sebagai materi.
       </p>
       <ul className="mt-6 divide-y divide-steel-border overflow-hidden rounded-xl border border-steel-border">

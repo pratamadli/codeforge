@@ -75,7 +75,7 @@ Tergantung kegagalan: butuh semua atau gagal cepat → `all`. Butuh laporan per-
 
 Di API invoice: hitung pajak sinkron (kecil) boleh di request. Panggil Stripe / generate PDF → async + queue. `readFileSync` atau `bcrypt.hashSync` di handler = seluruh replica "kasir berdiri menunggu".
 
-`forEach(async ...)` tidak menunggu. Produksi: `for...of` (berurutan, lebih aman ke rate limit) atau `Promise.all` / pool (bab 13 soal 3) jika pihak ketiga kuat.
+`forEach(async ...)` tidak menunggu. Produksi: `for...of` (berurutan, lebih aman ke rate limit) atau `Promise.all` / pool (bab 15 soal 3) jika pihak ketiga kuat.
 
 ## Kesalahan umum
 
